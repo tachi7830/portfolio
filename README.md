@@ -16,7 +16,7 @@
 パン屋さんに行きたいと思ったとき,おいしいパンを共有したいとき 
 
 ## 設計書  
-ER図
+ER図  
 https://drive.google.com/file/d/13fpmRlmJEJsjsNTppgX3pBi3cMysqQwm/view?usp=sharing  
 
 テーブル定義書
