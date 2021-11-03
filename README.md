@@ -25,6 +25,8 @@ https://docs.google.com/spreadsheets/d/1Er4EBVqBAAQDXgJWrAGTIFlS8paA8SsP2OzwHjsK
 ワイヤーフレーム  
 https://drive.google.com/file/d/1W07xoNTA2qbkrzxRO8LgENRYr5Yb23Vo/view?usp=sharing
 
+詳細設計  
+
 ## チャレンジ要素一覧    
 https://docs.google.com/spreadsheets/d/1_bBzSXBNo4k4TFcJ29nCqadOFzGxQ5p0h6OushszvfA/edit#gid=0
 
