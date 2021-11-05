@@ -1,0 +1,58 @@
+<div class='container'>
+  <div class="row">
+    <div class="col-12">
+      <h2 class="my-4 offset-1">記事詳細</h2>
+      <div class="row">
+        <p class="col-3">商品画像</p>
+          <% if @article.article_images.present? %>
+            <% @article.article_images.each do |image| %>
+              <%= attachment_image_tag image, :image, :fill, 400, 250 %>
+            <% end %>
+          <% else %>
+            <%= image_tag 'no-image.jpg', size: '200x200' %>
+          <% end %>
+      </div>
+      <div class="row">
+        <p class="col-3 my-2">購入した物</p>
+        <p class="my-2"><%= @article.bread_name %></p>
+      </div>
+      <div class="row">
+        <p class="col-3 my-3">ジャンル</p>
+        <p class="my-3"><%= @article.genre.name %></p>
+      </div>
+      <div class="row">
+        <p class="col-3 my-3">店名</p>
+        <p class="my-3"><%= @article.shop.name %></p>
+      </div>
+      <div class="row">
+        <p class="col-3 my-3">感想</p>
+        <p class="my-3"><%= @article.review %></p>
+      </div>
+      <div class="row">
+        <p class="col-3 my-3">評価</p>
+        <div class="my-3">
+          <div id="star-rate-<%= @article.id %>">
+            <script>
+            // 繰り返し処理でもidをidを一意にできるようにnote_idを入れる
+            $('#star-rate-<%= @article.id %>').raty({
+              size: 30,
+              starOff:  '<%= asset_path('star-off.png') %>',
+              starOn : '<%= asset_path('star-on.png') %>',
+              starHalf: '<%= asset_path('star-half.png') %>',
+              half: true,
+              // 読み込みだけで入力できない
+              readOnly: true,
+              //投稿された星の入力値を読み込む
+              score: <%= @article.rate %>,
+             });
+            </script>
+          </div>
+          <div><%= @article.rate %></div>
+        </div>
+      </div>
+      <div class="row offset-3 mt-3">
+        <%= link_to "編集する", edit_article_path, class: "btn btn_success" %>
+      </div>
+    </div>
+  </div>
+</div>

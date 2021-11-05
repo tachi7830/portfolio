@@ -1,0 +1,44 @@
+<div class='container'>
+  <div class="row">
+    <div class="col-12">
+      <h2 class="my-5 offset-1">記事一覧</h2>
+      <% @articles.each do |article| %>
+        <div>
+          <div><%= article.user.name %></div>
+        </div>
+        <div>
+          <% if article.article_images.present? %>
+            <% article.article_images.each do |image| %>
+              <%= attachment_image_tag image, :image, :fill, 150, 150 %>
+            <% end %>
+          <% else %>
+            <%= image_tag 'no-image.jpg', size: '200x200' %>
+          <% end %>
+        </div>
+        <div><%= article.bread_name %></div>
+        <div><%= article.genre.name %></div>
+        <div><%= article.shop.name %></div>
+        <div><%= article.review %></div>
+        <div id="star-rate-<%= article.id %>">
+          <script>
+          // 繰り返し処理でもidをidを一意にできるようにnote_idを入れる
+            $('#star-rate-<%= article.id %>').raty({
+              size: 30,
+              starOff:  '<%= asset_path('star-off.png') %>',
+              starOn : '<%= asset_path('star-on.png') %>',
+              starHalf: '<%= asset_path('star-half.png') %>',
+              half: true,
+              // 読み込みだけで入力できない
+              readOnly: true,
+              //投稿された星の入力値を読み込む
+              score: <%= article.rate %>,
+             });
+          </script>
+        </div>
+        <div><%= article.rate %></div>
+        <div><%= link_to "コメントする", article_path(article.id) %></div>
+      <% end %>
+    </div>
+    <div class="pagination"><%= paginate @articles %></div>
+  </div>
+</div>
