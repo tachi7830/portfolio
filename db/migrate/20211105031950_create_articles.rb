@@ -4,7 +4,7 @@ class CreateArticles < ActiveRecord::Migration[5.2]
       t.integer :user_id, null: false
       t.integer :shop_id, null: false
       t.integer :genre_id, null: false
-      t.string :image, null: false
+      t.json :images, null: false
       t.string :bread_name, null: false
       t.text :review, null: false
       t.float :rate, null: false, default: 0

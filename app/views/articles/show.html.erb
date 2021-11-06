@@ -4,7 +4,11 @@
       <h2 class="my-4 offset-1">記事詳細</h2>
       <div class="row">
         <p class="col-3">商品画像</p>
-        <div><%= image_tag @article.image.url %></div>
+        <div>
+          <% @article.images.each do |image| %>
+          <%= image_tag image.url %>
+          <% end %>
+        </div>
       </div>
       <div class="row">
         <p class="col-3 my-2">購入した物</p>

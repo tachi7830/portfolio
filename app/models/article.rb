@@ -5,9 +5,10 @@ class Article < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :goods, dependent: :destroy
   has_many :favourites, dependent: :destroy
-
-  mount_uploader :image, ImageUploader
   
+  THUMBNAIL_SIZE = [300, 200]
+  mount_uploaders :images, ImageUploader
+
   validates :rate, presence: true
   validates :rate, numericality: {
     #rateカラムでは整数のみ許可したい

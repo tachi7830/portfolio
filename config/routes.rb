@@ -10,7 +10,7 @@ Rails.application.routes.draw do
     resources :comments, only: [:create, :destroy]
   end
   resource :genres
-  resources :users, only: [:show, :edit]
+  resources :users, only: [:show, :edit, :update]
   resources :shops, only: [:index, :show]
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

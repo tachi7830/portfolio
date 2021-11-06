@@ -1,16 +1,17 @@
 class ArticlesController < ApplicationController
 
   def index
-    @articles = Article.page(params[:page]).per(5)
+    @articles = Article.page(params[:page]).per(5).order("id DESC")
   end
 
   def new
     @article = Article.new
   end
-
+  
   def create
     @article = Article.new(article_params)
     @article.user_id = current_user.id
+    byebug
     @article.save
     redirect_to articles_path
   end
@@ -38,7 +39,7 @@ class ArticlesController < ApplicationController
   private
 
   def article_params
-    params.require(:article).permit(:user_id, :shop_id, :genre_id, :bread_name, :review, :rate, :image)
+    params.require(:article).permit(:user_id, :shop_id, :genre_id, :bread_name, :review, :rate, { images: [] } )
   end
 
 end

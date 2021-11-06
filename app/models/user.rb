@@ -9,4 +9,7 @@ class User < ApplicationRecord
   has_many :goods, dependent: :destroy
   has_many :favourites, dependent: :destroy
   
+  THUMBNAIL_SIZE = [50, 50]
+  mount_uploader :image, ImageUploader
+
 end

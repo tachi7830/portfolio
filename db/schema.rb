@@ -42,7 +42,7 @@ ActiveRecord::Schema.define(version: 2021_11_05_034107) do
     t.integer "user_id", null: false
     t.integer "shop_id", null: false
     t.integer "genre_id", null: false
-    t.string "image", null: false
+    t.json "images", null: false
     t.string "bread_name", null: false
     t.text "review", null: false
     t.float "rate", default: 0.0, null: false

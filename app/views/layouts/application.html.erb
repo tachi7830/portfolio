@@ -29,6 +29,7 @@
               <% if user_signed_in? %>
                 <li class="nav-item mr-1"><%= link_to "記事一覧", articles_path, class: "nav-link fab fa-stack-exchange text-light" %></li>
                 <li class="nav-item mr-1"><%= link_to "投稿する", new_article_path, class: "nav-link fas fa-user-plus text-light" %></li>
+                <li class="nav-item mr-1"><%= link_to "マイページ", user_path(current_user.id), class: "nav-link fab fa-stack-exchange text-light" %></li>
                 <li class="nav-item mr-1"><%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "nav-link fas fa-sign-out-alt text-light" %></li>
               <% else %>
                 <li class="nav-item mr-1"><%= link_to "記事一覧", articles_path, class: "nav-link fab fa-stack-exchange text-light" %></li>

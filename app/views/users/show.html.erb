@@ -1,2 +1,23 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<div class='container'>
+  <div class="row">
+    <div class="col-12">
+      <h2 class="my-5 offset-1">マイページ</h2>
+      <div class="row">
+        <p class="col-3 my-2">ユーザー画像</p>
+        <p class="my-2"><%= image_tag @user.image.url %></p>
+      </div>
+      <div class="row">
+        <p class="col-3">ユーザー名</p>
+        <div><%= @user.name %></div>
+      </div>
+
+      <div class="row">
+        <p class="col-3 my-3">メールアドレス</p>
+        <p class="my-3"><%= @user.email %></p>
+      </div>
+      <div class="row offset-3 mt-3">
+        <%= link_to "編集する", edit_user_path, class: "btn btn_success" %>
+      </div>
+    </div>
+  </div>
+</div>
