@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
+    @articles = @user.articles.page(params[:page]).per(5).order("id DESC")
   end
 
   def edit
@@ -12,6 +13,7 @@ class UsersController < ApplicationController
     user.update(user_params)
     redirect_to user_path(user.id)
   end
+
   
   private
 

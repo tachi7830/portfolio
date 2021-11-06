@@ -4,19 +4,19 @@
       <h2 class="my-5 offset-1">記事編集</h2>
       <%= form_with model: @user, local: true do |f| %>
         <div class="form-group row">
-          <%= f.label :"ユーザー画像", class: "col-5 h5"%>
+          <%= f.label :"ユーザー画像", class: "col-4 h5"%>
           <%= f.file_field :image %>
         </div>
-        <div class="field form-group row">
-          <%= f.label :"ユーザー名", class: "col-5 h5" %>
-          <%= f.text_field :name, class: "form-control col-5" %>
+        <div class="field form-group row mt-5">
+          <%= f.label :"ユーザー名", class: "col-4 h5" %>
+          <%= f.text_field :name, class: "form-control col-4" %>
         </div>
-        <div class="field form-group row">
-          <%= f.label :"メールアドレス", class: "col-5 h5" %>
-          <%= f.email_field :email, class: "form-control col-5" %>
+        <div class="field form-group row mt-5">
+          <%= f.label :"メールアドレス", class: "col-4 h5" %>
+          <%= f.email_field :email, class: "form-control col-4" %>
         </div>
         <div class="row">
-          <%= f.submit "変更",class: 'btn btn_success btn-lg offset-5 mt-3' %>
+          <%= f.submit "変更",class: 'btn btn_success btn-lg offset-4 mt-3' %>
         </div>
       <% end %>
     </div>

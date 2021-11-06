@@ -6,7 +6,7 @@ class Article < ApplicationRecord
   has_many :goods, dependent: :destroy
   has_many :favourites, dependent: :destroy
   
-  THUMBNAIL_SIZE = [300, 200]
+  THUMBNAIL_SIZE = [250, 150]
   mount_uploaders :images, ImageUploader
 
   validates :rate, presence: true

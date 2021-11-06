@@ -3,21 +3,77 @@
     <div class="col-12">
       <h2 class="my-5 offset-1">マイページ</h2>
       <div class="row">
-        <p class="col-3 my-2">ユーザー画像</p>
-        <p class="my-2"><%= image_tag @user.image.url %></p>
+        <h5 class="col-4">ユーザー画像</h5>
+        <p><%= image_tag @user.image.url %></p>
       </div>
       <div class="row">
-        <p class="col-3">ユーザー名</p>
+        <h5 class="col-4">ユーザー名</h5>
         <div><%= @user.name %></div>
       </div>
-
-      <div class="row">
-        <p class="col-3 my-3">メールアドレス</p>
-        <p class="my-3"><%= @user.email %></p>
+      <div class="row mt-5">
+        <h5 class="col-4">メールアドレス</h5>
+        <p><%= @user.email %></p>
       </div>
       <div class="row offset-3 mt-3">
         <%= link_to "編集する", edit_user_path, class: "btn btn_success" %>
       </div>
+      <div class="row">
+        <% @articles.each do |article| %>
+        <div class="row mb-5">
+          <div class="col-10">
+            <div>
+              <% article.images.each do |image| %>
+                <%= image_tag image.url, class: "mb-2"%>
+              <% end %>
+            </div>
+            <div class="row">
+              <p class="col-2">店名</p>
+              <div class="col-7"><%= article.shop.name %></div>
+            </div>
+            <div class="row">
+              <p class="col-2">購入品</p>
+              <div class="col-7"><%= article.bread_name %></div>
+            </div>
+            <div class="row">
+              <p class="col-2">ジャンル</p>
+              <div class="col-7"><%= article.genre.name %></div>
+            </div>
+            <div class="row">
+              <p class="col-2">レビュー</p>
+              <div class="col-7"><%= article.review %></div>
+            </div>
+            <div class="row mt-3">
+              <p class="col-2">評価</p>
+              <div class="col-7">
+                <div id="star-rate-<%= article.id %>">
+                  <script>
+                  // 繰り返し処理でもidをidを一意にできるようにnote_idを入れる
+                  $('#star-rate-<%= article.id %>').raty({
+                    size: 30,
+                    starOff:  '<%= asset_path('star-off.png') %>',
+                    starOn : '<%= asset_path('star-on.png') %>',
+                    starHalf: '<%= asset_path('star-half.png') %>',
+                    half: true,
+                    // 読み込みだけで入力できない
+                    readOnly: true,
+                    //投稿された星の入力値を読み込む
+                    score: <%= article.rate %>,
+                  });
+                  </script>
+                  <%= article.rate%>
+                </div>
+              </div>
+            </div>
+            <div class="row offset-2">
+              <%= link_to "コメントする", article_path(article.id), class: "mr-5" %>
+              <%= link_to "編集", edit_article_path(article.id), class: "mr-5" %>
+              <%= link_to "削除", article_path(article.id), method: :delete, "data-confirm" => "本当に削除しますか？"%>
+            </div>
+          </div>
+        </div>
+        <% end %>
+      </div>
     </div>
+    <div class="pagination"><%= paginate @articles %></div>
   </div>
 </div>
