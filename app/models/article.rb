@@ -5,9 +5,9 @@ class Article < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :goods, dependent: :destroy
   has_many :favourites, dependent: :destroy
-  has_many :article_images, dependent: :destroy
-  accepts_attachments_for :article_images, attachment: :image
 
+  mount_uploader :image, ImageUploader
+  
   validates :rate, presence: true
   validates :rate, numericality: {
     #rateカラムでは整数のみ許可したい

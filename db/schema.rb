@@ -38,17 +38,11 @@ ActiveRecord::Schema.define(version: 2021_11_05_034107) do
     t.index ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true
   end
 
-  create_table "article_images", force: :cascade do |t|
-    t.integer "article_id", null: false
-    t.string "image_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "articles", force: :cascade do |t|
     t.integer "user_id", null: false
     t.integer "shop_id", null: false
     t.integer "genre_id", null: false
+    t.string "image", null: false
     t.string "bread_name", null: false
     t.text "review", null: false
     t.float "rate", default: 0.0, null: false
@@ -59,7 +53,7 @@ ActiveRecord::Schema.define(version: 2021_11_05_034107) do
   create_table "breads", force: :cascade do |t|
     t.integer "shop_id", null: false
     t.string "name", null: false
-    t.string "image_id", null: false
+    t.string "image", null: false
     t.integer "price", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -93,16 +87,10 @@ ActiveRecord::Schema.define(version: 2021_11_05_034107) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "shop_images", force: :cascade do |t|
-    t.integer "shop_id", null: false
-    t.string "image_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "shops", force: :cascade do |t|
     t.string "name", null: false
     t.text "description", null: false
+    t.string "image", null: false
     t.string "news", null: false
     t.string "url", null: false
     t.string "area", null: false
@@ -125,7 +113,7 @@ ActiveRecord::Schema.define(version: 2021_11_05_034107) do
     t.datetime "confirmation_sent_at"
     t.string "unconfirmed_email"
     t.string "name"
-    t.string "image_id"
+    t.string "image"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_users_on_email", unique: true

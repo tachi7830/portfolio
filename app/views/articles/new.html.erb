@@ -5,7 +5,7 @@
       <%= form_with model: @article, local: true do |f| %>
         <div class="form-group row">
           <%= f.label :"商品画像", class: "col-3 h4"%>
-          <%= f.attachment_field :article_images_images, multiple: true %>
+          <%= f.file_field :image %>
         </div>
         <div class="field form-group row">
           <%= f.label :"店名", class: "col-3 h4" %>

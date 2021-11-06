@@ -6,14 +6,9 @@
         <div>
           <div><%= article.user.name %></div>
         </div>
+      <div class="row offset-2">
         <div>
-          <% if article.article_images.present? %>
-            <% article.article_images.each do |image| %>
-              <%= attachment_image_tag image, :image, :fill, 150, 150 %>
-            <% end %>
-          <% else %>
-            <%= image_tag 'no-image.jpg', size: '200x200' %>
-          <% end %>
+          <%= image_tag article.image.url %>
         </div>
         <div><%= article.bread_name %></div>
         <div><%= article.genre.name %></div>
@@ -37,6 +32,8 @@
         </div>
         <div><%= article.rate %></div>
         <div><%= link_to "コメントする", article_path(article.id) %></div>
+        <div><%= link_to "削除", article_path(article.id), method: :delete, "data-confirm" => "本当に削除しますか？"%></div>
+      </div>
       <% end %>
     </div>
     <div class="pagination"><%= paginate @articles %></div>
