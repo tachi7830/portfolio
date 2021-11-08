@@ -6,7 +6,7 @@ Rails.application.routes.draw do
 
   resources :articles do
     resource :favorites, only: [:create, :destroy]
-    resources :goods, only: [:create, :destroy]
+    resource :goods, only: [:create, :destroy]
     resources :comments, only: [:create, :destroy]
   end
   resource :genres

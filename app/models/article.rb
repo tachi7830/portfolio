@@ -8,6 +8,10 @@ class Article < ApplicationRecord
   
   THUMBNAIL_SIZE = [250, 150]
   mount_uploaders :images, ImageUploader
+  
+  def gooded_by?(user)
+    goods.where(user_id: user.id).exists?
+  end
 
   validates :rate, presence: true
   validates :rate, numericality: {

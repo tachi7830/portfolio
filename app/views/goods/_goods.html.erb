@@ -1,0 +1,9 @@
+<% if article.gooded_by?(current_user) %>
+  <%= link_to article_goods_path(article), method: :delete, remote: true do %>
+    ♥<%= article.goods.count %>いいねを外す
+  <% end %>
+<% else %>
+  <%= link_to article_goods_path(article), method: :post, remote: true do %>
+    ♡<%= article.goods.count %>いいね
+  <% end %>
+<% end %>

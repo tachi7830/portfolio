@@ -5,7 +5,7 @@ class ImageUploader < CarrierWave::Uploader::Base
 
   def dynamic_resize_fit
     size = model.class::THUMBNAIL_SIZE
-    resize_and_pad(size[0], size[1])
+    resize_and_pad(size[0], size[1], "#f5deb3")
     #size[0]=横幅、[1]=縦幅　各モデルで指定したサイズの値が入る。
     #resize_and_pad = 画像が小さいとき余白を足す。
   end

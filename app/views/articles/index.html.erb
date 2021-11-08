@@ -9,13 +9,14 @@
             <p><%= article.user.name %></p>
             <p><%= article.created_at.strftime("%Y/%m/%d") %></p>
           </div>
-          <div class="col-10">
-            <div>
+          <div class="col-10" style="background-color: #f5deb3;">
+            <div class="mb-3 mt-3">
               <% article.images.each do |image| %>
-                <%= image_tag image.url, class: "mb-2"%>
+                <%= image_tag image.url%>
               <% end %>
             </div>
-            <div class="row">
+            <div style="background-color: #deb887;">
+              <div class="row">
               <p class="col-2">店名</p>
               <div class="col-7"><%= article.shop.name %></div>
             </div>
@@ -53,7 +54,12 @@
                 </div>
               </div>
             </div>
+            </div>
             <div class="row offset-2">
+              <div id="good_buttons_<%= article.id %>" class="mr-2">
+                <%= render "goods/goods", article: article %>
+              </div>
+              
               <%= link_to "コメントする", article_path(article.id), class: "mr-5" %>
               <%= link_to "編集", edit_article_path(article.id), class: "mr-5" %>
               <%= link_to "削除", article_path(article.id), method: :delete, "data-confirm" => "本当に削除しますか？"%>
