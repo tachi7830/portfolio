@@ -16,8 +16,8 @@
           <%= f.text_field :bread_name, autofocus: true, placeholder:"クロワッサン", class: "form-control col-8" %>
         </div>
         <div class="field form-group row">
-          <%= f.label :"ジャンル", class: "col-3 h4" %>
-          <%= f.collection_select :genre_id, Genre.all, :id, :name, include_blank: "選択して下さい" %>
+          <%= f.label :"エリア", class: "col-3 h4" %>
+          <%= f.collection_select :prefecture_code, JpPrefecture::Prefecture.all, :code, :name, include_blank: "選択して下さい" %>
         </div>
         <div class="field form-group row">
           <%= f.label :"感想", class: "col-3 h4" %>

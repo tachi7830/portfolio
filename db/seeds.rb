@@ -13,6 +13,7 @@ AdminUser.create!(
 
 #メール認証スキップユーザー
 user = User.create!(
+  name: "ゲスト",
   email: "aaa@gmail.com",
   password:  "111111"
 )

@@ -4,27 +4,27 @@
       <h2 class="my-4 offset-1">記事編集</h2>
       <%= form_with model: @article, local: true do |f| %>
         <div class="form-group row">
-          <%= f.label :"商品画像", class: "col-3 h4"%>
+          <%= f.label :"商品画像", class: "col-3 h5"%>
           <%= f.file_field :image , multiple: true%>
         </div>
         <div class="field form-group row">
-          <%= f.label :"店名", class: "col-3 h4" %>
+          <%= f.label :"店名", class: "col-3 h5" %>
           <%= f.collection_select :shop_id, Shop.all, :id, :name, include_blank: "選択して下さい" %>
         </div>
         <div class="field form-group row">
-          <%= f.label :"購入した物", class: "col-3 h4" %>
+          <%= f.label :"購入した物", class: "col-3 h5" %>
           <%= f.text_field :bread_name, autofocus: true, placeholder:"クロワッサン", class: "form-control col-8" %>
         </div>
         <div class="field form-group row">
-          <%= f.label :"ジャンル", class: "col-3 h4" %>
-          <%= f.collection_select :genre_id, Genre.all, :id, :name, include_blank: "選択して下さい" %>
+          <%= f.label :"エリア", class: "col-3 h5" %>
+          <%= f.collection_select :prefecture_code, JpPrefecture::Prefecture.all, :code, :name, include_blank: "選択して下さい" %>
         </div>
         <div class="field form-group row">
-          <%= f.label :"感想", class: "col-3 h4" %>
+          <%= f.label :"感想", class: "col-3 h5" %>
           <%= f.text_area :review, :size=>"60x12", class: "form-control col-8" %>
         </div>
         <div class="field form-group row" id="star" >
-          <%= f.label :"評価", class: "col-3 h4" %>
+          <%= f.label :"評価", class: "col-3 h5" %>
           <%= f.hidden_field :rate, id: :review_star, class: "form-control" %>
         </div>
         <script>

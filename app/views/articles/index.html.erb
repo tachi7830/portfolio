@@ -5,14 +5,20 @@
       <% @articles.each do |article| %>
         <div class="row mb-5">
           <div class="col-2 text-center mt-5">
-            <%= image_tag article.user.image.url, class: "mx-auto"%>
+            <div>
+              <% if article.user.image.present? %>
+                <%= image_tag article.user.image.url, class: "mx-auto"%>
+              <% else %>
+                <%= image_tag("no_image_user.png", :size => "100x100") %>
+              <% end %>
+            </div>
             <p><%= article.user.name %></p>
             <p><%= article.created_at.strftime("%Y/%m/%d") %></p>
           </div>
           <div class="col-10" style="background-color: #f5deb3;">
             <div class="mb-3 mt-3">
               <% article.images.each do |image| %>
-                <%= image_tag image.url%>
+                <%= image_tag image.url, class: "mt-2"%>
               <% end %>
             </div>
             <div style="background-color: #deb887;">
@@ -25,8 +31,8 @@
               <div class="col-7"><%= article.bread_name %></div>
             </div>
             <div class="row">
-              <p class="col-2">ジャンル</p>
-              <div class="col-7"><%= article.genre.name %></div>
+              <p class="col-2">エリア</p>
+              <div class="col-7"><%= article.prefecture.name %></div>
             </div>
             <div class="row">
               <p class="col-2">レビュー</p>
@@ -34,38 +40,38 @@
             </div>
             <div class="row mt-3">
               <p class="col-2">評価</p>
-              <div class="col-7">
-                <div id="star-rate-<%= article.id %>">
-                  <script>
-                  // 繰り返し処理でもidをidを一意にできるようにnote_idを入れる
-                  $('#star-rate-<%= article.id %>').raty({
-                    size: 30,
-                    starOff:  '<%= asset_path('star-off.png') %>',
-                    starOn : '<%= asset_path('star-on.png') %>',
-                    starHalf: '<%= asset_path('star-half.png') %>',
-                    half: true,
-                    // 読み込みだけで入力できない
-                    readOnly: true,
-                    //投稿された星の入力値を読み込む
-                    score: <%= article.rate %>,
-                  });
-                  </script>
-                  <%= article.rate%>
-                </div>
+            <div class="col-7">
+              <div id="star-rate-<%= article.id %>">
+                <script>
+                // 繰り返し処理でもidをidを一意にできるようにnote_idを入れる
+                $('#star-rate-<%= article.id %>').raty({
+                  size: 30,
+                  starOff:  '<%= asset_path('star-off.png') %>',
+                  starOn : '<%= asset_path('star-on.png') %>',
+                  starHalf: '<%= asset_path('star-half.png') %>',
+                  half: true,
+                  // 読み込みだけで入力できない
+                  readOnly: true,
+                  //投稿された星の入力値を読み込む
+                  score: <%= article.rate %>,
+                 });
+                </script>
+                <%= article.rate%>
               </div>
-            </div>
-            </div>
-            <div class="row offset-2">
-              <div id="good_buttons_<%= article.id %>" class="mr-2">
-                <%= render "goods/goods", article: article %>
-              </div>
-              
-              <%= link_to "コメントする", article_path(article.id), class: "mr-5" %>
-              <%= link_to "編集", edit_article_path(article.id), class: "mr-5" %>
-              <%= link_to "削除", article_path(article.id), method: :delete, "data-confirm" => "本当に削除しますか？"%>
             </div>
           </div>
         </div>
+        <div class="row offset-2">
+          <div id="good_buttons_<%= article.id %>" class="mr-2">
+            <%= render "goods/goods", article: article %>
+          </div>
+          <div>
+            <%= link_to "コメントする", article_path(article.id), class: "mr-5" %>
+            <%= link_to "編集", edit_article_path(article.id), class: "mr-5" %>
+            <%= link_to "削除", article_path(article.id), method: :delete, "data-confirm" => "本当に削除しますか？"%>
+          </div>
+        </div>
+      </div>
       <% end %>
     </div>
     <div class="pagination"><%= paginate @articles %></div>

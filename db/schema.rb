@@ -41,7 +41,7 @@ ActiveRecord::Schema.define(version: 2021_11_05_034107) do
   create_table "articles", force: :cascade do |t|
     t.integer "user_id", null: false
     t.integer "shop_id", null: false
-    t.integer "genre_id", null: false
+    t.string "prefecture_code", null: false
     t.json "images", null: false
     t.string "bread_name", null: false
     t.text "review", null: false
@@ -70,12 +70,6 @@ ActiveRecord::Schema.define(version: 2021_11_05_034107) do
   create_table "favourites", force: :cascade do |t|
     t.integer "user_id", null: false
     t.integer "article_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "genres", force: :cascade do |t|
-    t.string "name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -112,7 +106,7 @@ ActiveRecord::Schema.define(version: 2021_11_05_034107) do
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
     t.string "unconfirmed_email"
-    t.string "name"
+    t.string "name", null: false
     t.string "image"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

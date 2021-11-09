@@ -17,6 +17,7 @@ class ArticlesController < ApplicationController
 
   def show
     @article = Article.find(params[:id])
+    @comment = Comment.new
   end
 
   def edit
@@ -38,7 +39,7 @@ class ArticlesController < ApplicationController
   private
 
   def article_params
-    params.require(:article).permit(:user_id, :shop_id, :genre_id, :bread_name, :review, :rate, { images: [] } )
+    params.require(:article).permit(:user_id, :shop_id, :prefecture_code, :bread_name, :review, :rate, { images: [] } )
   end
 
 end
