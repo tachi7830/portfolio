@@ -1,59 +1,63 @@
 <div class='container'>
   <div class="row">
-    <div class="col-12">
-      <h2 class="my-5 offset-1">ユーザー詳細</h2>
+    <div class="col-4 offset-4 my-5 text-center">
+      <% if @user.image.present? %>
+        <%= image_tag @user.image.url, size: "100x100", class: "mx-auto" %>
+      <% else %>
+        <%= image_tag("no_image_user.png", size: "100x100") %>
+      <% end %>
+      <h6 class="mt-4"><%= @user.name %>さん</h6>
+      <div><%= link_to "ユーザー情報編集する", edit_user_path, class: "btn btn_success" %></div>
+    </div>
+  </div>
+  <div>
+    <% @articles.each do |article| %>
+    <div class="row col-10 offset-1 border border-secondary mb-3" style="background-color: #f5deb3;">
       <div class="row">
-        <div class="col-2 mt-3 text-center">
-          <% if @user.image.present? %>
-            <%= image_tag @user.image.url, :size => "100x100", class: "mx-auto" %>
-          <% else %>
-            <%= image_tag("no_image_user.png", :size => "50x50") %>
-          <% end %>
-          <h6 class="mt-4"><%= @user.name %>さん</h6>
-          <div><%= link_to "編集する", edit_user_path, class: "btn btn_success" %></div>
+        <% article.images.each do |image| %>
+        <div class="col-3 mt-2">
+          <%= image_tag image.url, size: "200x150", class: "img-fluid rounded border border-secondary"%>
+          <!--%= image_tag article.images[0].url, :size => "180x120" %>-->
         </div>
-        <% @articles.each do |article| %>
-          <div class="offset-1 mt-3">
-            <%= image_tag article.images[0].url, :size => "250x180", class: "mx-auto"%>
-          </div>
-          <div class="col-3 offset-1 mt-4">
-            <p class="mb-4"><%= article.shop.name %></p>
-            <p class="mb-4"><%= article.prefecture.name %></p>
-            <p class="mb-4"><%= article.bread_name %></p>
-            <div id="star-rate-<%= article.id %>">
-              <script>
-                // 繰り返し処理でもidをidを一意にできるようにnote_idを入れる
-                $('#star-rate-<%= article.id %>').raty({
-                  size: 30,
-                  starOff:  '<%= asset_path('star-off.png') %>',
-                  starOn : '<%= asset_path('star-on.png') %>',
-                  starHalf: '<%= asset_path('star-half.png') %>',
-                  half: true,
-                  // 読み込みだけで入力できない
-                  readOnly: true,
-                  //投稿された星の入力値を読み込む
-                  score: <%= article.rate %>,
-                });
-              </script>
-              <%= article.rate %>
-            </div>
-          </div>
-          <div class="row col-7 offset-3 mt-4">
-            <p><%= article.review %></p>
-          </div>
-          <div class="row col-9 offset-3">
-            <div id="good_buttons_<%= article.id %>" class="mr-4">
-              <%= render "goods/goods", article: article %>
-            </div>
-            <div>
-              <%= link_to "コメントする", article_path(article.id), class: "mr-5"%>
-              <%= link_to "編集", edit_article_path(article.id), class: "mr-4"%>
-              <%= link_to "削除", article_path(article.id), method: :delete, "data-confirm" => "本当に削除しますか？"%>
-            </div>
-          </div>
         <% end %>
       </div>
+      <div class="row">
+        <div class="col-5 mt-4 ml-3">
+          <p class="mb-4"><%= article.shop.name %></p>
+          <p class="mb-4"><%= article.prefecture.name %></p>
+          <div id="star-rate-<%= article.id %>">
+            <script>
+              // 繰り返し処理でもidをidを一意にできるようにnote_idを入れる
+              $('#star-rate-<%= article.id %>').raty({
+                size: 30,
+                starOff:  '<%= asset_path('star-off.png') %>',
+                starOn : '<%= asset_path('star-on.png') %>',
+                starHalf: '<%= asset_path('star-half.png') %>',
+                half: true,
+                // 読み込みだけで入力できない
+                readOnly: true,
+                //投稿された星の入力値を読み込む
+                score: <%= article.rate %>,
+              });
+            </script>
+            <%= article.rate %>
+          </div>
+        </div>
+        <div class="col-6 mt-4">
+          <p class="mb-4"><%= article.bread_name %></p>
+          <p class="mt-4"><%= article.review %></p>
+        </div>
+      </div>
+      <div class="row col-11 offset-1 mt-4 mb-3">
+        <div id="good_buttons_<%= article.id %>">
+          <%= render "goods/goods", article: article %>
+        </div>
+          <%= link_to "コメントする", article_path(article.id), class: "ml-4 mr-5"%>
+          <%= link_to "編集", edit_article_path(article.id), class: "mr-4"%>
+          <%= link_to "削除", article_path(article.id), method: :delete, "data-confirm" => "本当に削除しますか？" %>
+      </div>
     </div>
-    <div class="pagination"><%= paginate @articles %></div>
+  <% end %>
   </div>
+  <div class="pagination"><%= paginate @articles %></div>
 </div>

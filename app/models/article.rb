@@ -8,7 +8,7 @@ class Article < ApplicationRecord
   include JpPrefecture
   jp_prefecture :prefecture_code
 
-  THUMBNAIL_SIZE = [250, 150]
+  THUMBNAIL_SIZE = [220, 150]
   mount_uploaders :images, ImageUploader
 
   def gooded_by?(user)

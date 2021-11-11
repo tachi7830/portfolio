@@ -1,6 +1,7 @@
 ActiveAdmin.register Shop do
   permit_params :name, :description, :news, :url, :area, :address, :phone_number, :opening_hour, :closed_day, :image
-   form do |f|
+    
+    form do |f|
       f.inputs "Shops" do
         f.input :name
         f.input :description

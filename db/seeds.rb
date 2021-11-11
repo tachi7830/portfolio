@@ -19,3 +19,11 @@ user = User.create!(
 )
 user.skip_confirmation!
 user.save!
+
+user = User.create!(
+  name: "ゲスト2",
+  email: "bbb@gmail.com",
+  password:  "222222"
+)
+user.skip_confirmation!
+user.save!

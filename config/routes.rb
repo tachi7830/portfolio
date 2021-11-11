@@ -9,7 +9,7 @@ Rails.application.routes.draw do
     resource :goods, only: [:create, :destroy]
     resources :comments, only: [:create, :destroy]
   end
-  resource :genres
+  resources :breads, only:[:index]
   resources :users, only: [:show, :edit, :update]
   resources :shops, only: [:index, :show]
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
