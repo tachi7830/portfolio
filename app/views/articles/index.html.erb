@@ -1,9 +1,9 @@
 <div class='container'>
   <h2 class="my-5 offset-1">記事一覧</h2>
   <% @articles.each do |article| %>
-    <div class="row mb-5">
+    <div class="row">
       <div class="col-2 text-center mt-5">
-        <div>
+        <div class="mb-2">
           <% if article.user.image.present? %>
             <%= image_tag article.user.image.url%>
           <% else %>
@@ -21,7 +21,7 @@
         <div class="row mb-3 mt-3">
           <div class="offset-1">
             <% article.images.each do |image| %>
-            <%= image_tag image.url, size: "250x180", class: "mr-2 mb-1"%>
+              <%= image_tag image.url, size: "200x180", class: "img-fluid rounded mr-2 mb-1"%>
             <% end %>
           </div>
         </div>
@@ -78,5 +78,5 @@
       </div>
     </div>
   <% end %>
-  <div class="pagination mb-5"><%= paginate @articles %></div>
+  <div class="pagination my-5"><%= paginate @articles %></div>
 </div>

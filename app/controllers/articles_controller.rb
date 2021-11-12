@@ -1,7 +1,7 @@
 class ArticlesController < ApplicationController
 
   def index
-    @articles = Article.page(params[:page]).per(5).order("id DESC")
+    @articles = Article.order("id DESC").page(params[:page]).per(5)
   end
 
   def new
