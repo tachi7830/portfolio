@@ -5,12 +5,13 @@ Rails.application.routes.draw do
   ActiveAdmin.routes(self)
   get 'shops/search' => 'shops#search'
   resources :articles do
-    resource :favorites, only: [:create, :destroy]
     resource :goods, only: [:create, :destroy]
     resources :comments, only: [:create, :destroy]
   end
   resources :breads, only:[:index]
   resources :users, only: [:show, :edit, :update]
-  resources :shops, only: [:index, :show]
+  resources :shops, only: [:index, :show] do
+    resource :favourites, only: [:create, :destroy]
+  end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

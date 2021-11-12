@@ -1,5 +1,6 @@
 class GoodsController < ApplicationController
-
+  before_action :authenticate_user!
+  
   def create
     @article = Article.find(params[:article_id])
     good = current_user.goods.new(article_id: @article.id)

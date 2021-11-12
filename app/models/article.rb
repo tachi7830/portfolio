@@ -3,7 +3,6 @@ class Article < ApplicationRecord
   belongs_to :shop
   has_many :comments, dependent: :destroy
   has_many :goods, dependent: :destroy
-  has_many :favourites, dependent: :destroy
 
   include JpPrefecture
   jp_prefecture :prefecture_code

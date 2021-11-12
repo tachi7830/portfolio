@@ -1,6 +1,6 @@
 <div class='container'>
   <div class="row mt-5">
-    <div class="col-4 offset-2">
+    <div class="col-4 offset-1">
       <%= image_tag @shop.image.url %>
     </div>
     <div class="col-6 mt-5">
@@ -8,9 +8,14 @@
         <h2><%= @shop.name %></h2>
       </div>
     </div>
+    <div class="col-1 mt-5">
+    <div id="favourite_buttons_<%= @shop.id %>">
+      <%= render "favourites/favourites", shop: @shop %>
+    </div>
+  </div>
   </div>
   <div class="row mt-5">
-    <div class="col-3 offset-3">
+    <div class="col-3 offset-2">
       <h4>News</h4>
     </div>
     <div class="col-4">
