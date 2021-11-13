@@ -1,0 +1,25 @@
+<div class='container'>
+  <h2 class="my-5 text-center">お問合せ</h2>
+  <div class="row">
+    <div class="col-8 offset-2">
+      <%= form_with model: @contact, url: contact_path, local: true do |f| %>
+      <div class="form-group">
+        <%= f.label :name, "名前" %>
+        <%= f.text_field :name, autofocus: true, class: "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= f.label :email, "メールアドレス" %>
+        <%= f.email_field :email, class: "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= f.label :message, "お問合せ内容" %>
+        <%= f.text_area :message, size: "10x10", class: "form-control" %>
+      </div>
+      <div>
+        <%= f.submit "送信",class: 'btn btn_success' %>
+      </div>
+    <% end %>
+    </div>
+  </div>
+</div>
+  
