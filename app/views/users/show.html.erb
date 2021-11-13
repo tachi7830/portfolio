@@ -7,7 +7,7 @@
         <%= image_tag("no_image_user.png", size: "100x100") %>
       <% end %>
       <h6 class="mt-4"><%= @user.name %>さん</h6>
-      <div><%= link_to "ユーザー情報編集する", edit_user_path, class: "btn" %></div>
+      <div><%= link_to "ユーザー情報編集する", edit_user_path %></div>
     </div>
   </div>
   <div>
@@ -58,6 +58,35 @@
       </div>
     </div>
   <% end %>
+  </div>
+  <div class="row col-12">
+    <table class="table"> 
+      <h4>ブックマーク一覧</h4>
+      <thead>
+        <tr>
+          <th></th>
+          <th>店名</th>
+          <th>住所</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @favourites.each do |favourite| %>
+          <tr>
+            <td>
+              <%= image_tag favourite.shop.image.url, size: "100x100" %>
+            </td>
+            <td>
+              <%= link_to shop_path(favourite.shop.id) do %>
+                <%= favourite.shop.name %>
+              <% end %>
+            </td>
+            <td>
+              <%= favourite.shop.area %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
   </div>
   <div class="pagination my-5"><%= paginate @articles%></div>
 </div>

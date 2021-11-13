@@ -5,6 +5,40 @@
     </div>
   </div>
   <div class="row">
+    <table class="table">
+      <% @week_ranks.each.with_index(1)  do |article, i| %>
+        <tr>
+          <td>
+            <h3 class="ml-4 mt-3"><%= i %>位</h3>
+            <h5 class="mt-4">いいね数<%= article.goods.count %></h5>
+          </td>
+          <th class="row">
+            <div class="col-4">
+              <% if article.user.image.present? %>
+                <%= image_tag article.user.image.url, :size => "80x80"%>
+              <% else %>
+                <%= image_tag("no_image_user.png", :size => "80x80") %>
+              <% end %>
+              <p>
+                <%= link_to user_path(article.user) do %>
+                  <%= article.user.name %>さん
+                <% end %>
+              </p>
+            </div>
+            <div>
+              <%= link_to article_path(article.id) do %>
+                <%= image_tag article.images[0].url, :size => "150x100", class: "rounded mb-2" %>
+              <% end %>
+            </div>
+          </th>
+          <th>
+            
+          </th>
+        </tr>
+      <% end %>
+    </table>
+  </div>
+  <div class="row">
     <div class="col-8 offset-2 mb-5">
       <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
         <ol class="carousel-indicators">

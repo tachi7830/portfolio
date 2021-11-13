@@ -14,10 +14,7 @@ class ShopsController < ApplicationController
   end
   
   def search
-
-    @searchs = Shop.search(params[:search])
-    
-#@teamsは好きなものを入力して、Adminの部分には検索したいテーブル名を入力する
+    @searchs = Shop.search(params)  #paramsでParametersの値をすべて持ってくる
   end
 
   def shop_params
