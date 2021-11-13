@@ -5,12 +5,25 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?
+AdminUser.create!(
+  email: 'admin@example.com',
+  password: 'password',
+  password_confirmation: 'password'
+) if Rails.env.development?
 
 #メール認証スキップユーザー
 user = User.create!(
+  name: "ゲスト",
   email: "aaa@gmail.com",
   password:  "111111"
+)
+user.skip_confirmation!
+user.save!
+
+user = User.create!(
+  name: "ゲスト2",
+  email: "bbb@gmail.com",
+  password:  "222222"
 )
 user.skip_confirmation!
 user.save!

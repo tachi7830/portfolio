@@ -1,0 +1,65 @@
+<div class='container'>
+  <div class="row">
+    <div class="col-12">
+      <h2 class="my-4 offset-1">記事詳細</h2>
+      <div class="row">
+        <p class="col-3 h5">商品画像</p>
+        <div>
+          <% @article.images.each do |image| %>
+          <%= image_tag image.url %>
+          <% end %>
+        </div>
+      </div>
+      <div class="row">
+        <p class="col-3 my-2 h5">購入した物</p>
+        <p class="col-9 my-2"><%= @article.bread_name %></p>
+      </div>
+      <div class="row">
+        <p class="col-3 my-3 h5">エリア</p>
+        <p class="my-3"><%= @article.prefecture.name %></p>
+      </div>
+      <div class="row">
+        <p class="col-3 my-3 h5">店名</p>
+        <p class="my-3"><%= @article.shop.name %></p>
+      </div>
+      <div class="row">
+        <p class="col-3 my-3 h5">感想</p>
+        <p class="col-9 my-3"><%= @article.review %></p>
+      </div>
+      <div class="row">
+        <p class="col-3 my-3 h5">評価</p>
+        <div class="my-3">
+          <div id="star-rate-<%= @article.id %>">
+            <script>
+            // 繰り返し処理でもidをidを一意にできるようにnote_idを入れる
+            $('#star-rate-<%= @article.id %>').raty({
+              size: 30,
+              starOff:  '<%= asset_path('star-off.png') %>',
+              starOn : '<%= asset_path('star-on.png') %>',
+              starHalf: '<%= asset_path('star-half.png') %>',
+              half: true,
+              // 読み込みだけで入力できない
+              readOnly: true,
+              //投稿された星の入力値を読み込む
+              score: <%= @article.rate %>,
+             });
+            </script>
+          </div>
+          <div><%= @article.rate %></div>
+        </div>
+      </div>
+      <div class="row offset-3 mt-3">
+        <%= link_to "編集する", edit_article_path, class: "btn btn_success" %>
+      </div>
+      <div id="comments">
+        <%= render 'comments/comments', article: @article, comment: @comment %>
+      </div>
+      <div>
+        <%= form_with model:[@article,@comment], remote: true do |f| %>
+          <%= f.text_area :comment, size:"90x5" %><br>
+          <%= f.submit '送信'%>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

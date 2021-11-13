@@ -1,0 +1,92 @@
+<div class='container'>
+  <div class="row">
+    <div class="col-4 offset-4 my-5 text-center">
+      <% if @user.image.present? %>
+        <%= image_tag @user.image.url, size: "100x100", class: "mx-auto" %>
+      <% else %>
+        <%= image_tag("no_image_user.png", size: "100x100") %>
+      <% end %>
+      <h6 class="mt-4"><%= @user.name %>さん</h6>
+      <div><%= link_to "ユーザー情報編集する", edit_user_path %></div>
+    </div>
+  </div>
+  <div>
+    <% @articles.each do |article| %>
+    <div class="row col-10 offset-1 rounded border border-secondary mb-3" style="background-color: #f5deb3;">
+      <div class="row">
+        <% article.images.each do |image| %>
+        <div class="col-3 mt-2">
+          <%= image_tag image.url, size: "200x150", class: "img-fluid rounded border border-secondary"%>
+          <!--%= image_tag article.images[0].url, :size => "180x120" %>-->
+        </div>
+        <% end %>
+      </div>
+      <div class="row">
+        <div class="col-5 mt-4 ml-3">
+          <p class="mb-4"><%= article.shop.name %></p>
+          <p class="mb-4"><%= article.prefecture.name %></p>
+          <div id="star-rate-<%= article.id %>">
+            <script>
+              // 繰り返し処理でもidをidを一意にできるようにnote_idを入れる
+              $('#star-rate-<%= article.id %>').raty({
+                size: 30,
+                starOff:  '<%= asset_path('star-off.png') %>',
+                starOn : '<%= asset_path('star-on.png') %>',
+                starHalf: '<%= asset_path('star-half.png') %>',
+                half: true,
+                // 読み込みだけで入力できない
+                readOnly: true,
+                //投稿された星の入力値を読み込む
+                score: <%= article.rate %>,
+              });
+            </script>
+            <%= article.rate %>
+          </div>
+        </div>
+        <div class="col-6 mt-4">
+          <p class="mb-4"><%= article.bread_name %></p>
+          <p class="mt-4"><%= article.review %></p>
+        </div>
+      </div>
+      <div class="row col-11 offset-1 mt-4 mb-3">
+        <div id="good_buttons_<%= article.id %>">
+          <%= render "goods/goods", article: article %>
+        </div>
+          <%= link_to "コメントする", article_path(article.id), class: "ml-4 mr-5"%>
+          <%= link_to "編集", edit_article_path(article.id), class: "mr-4"%>
+          <%= link_to "削除", article_path(article.id), method: :delete, "data-confirm" => "本当に削除しますか？" %>
+      </div>
+    </div>
+  <% end %>
+  </div>
+  <div class="row col-12">
+    <table class="table"> 
+      <h4>ブックマーク一覧</h4>
+      <thead>
+        <tr>
+          <th></th>
+          <th>店名</th>
+          <th>住所</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @favourites.each do |favourite| %>
+          <tr>
+            <td>
+              <%= image_tag favourite.shop.image.url, size: "100x100" %>
+            </td>
+            <td>
+              <%= link_to shop_path(favourite.shop.id) do %>
+                <%= favourite.shop.name %>
+              <% end %>
+            </td>
+            <td>
+              <%= favourite.shop.area %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+  <div class="pagination my-5"><%= paginate @articles%></div>
+</div>

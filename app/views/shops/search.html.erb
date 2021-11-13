@@ -1,0 +1,29 @@
+<div class='container'>
+  <div class="row">
+    <h2 class="col-12 my-5 offset-1">パン屋さん一覧</h2>
+    <table class="table">
+      <thead>
+        <tr>
+          <th></th>
+          <th>店名</th>
+          <th>住所</th>
+          <th>説明</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @searchs.each do |search| %>
+        <tr>
+          <td><%= image_tag search.image.url, :size => "150x100" %></td>
+          <td>
+            <%= link_to shop_path(search.id) do %>
+              <%= search.name %>
+            <% end %>
+          </td>
+          <td><%= search.area %></td>
+          <td><%= search.description %></td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

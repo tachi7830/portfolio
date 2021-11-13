@@ -1,0 +1,30 @@
+<div class='container'>
+  <div class="row">
+    <h2 class="col-12 my-5 text-center">パン屋さん一覧</h2>
+    <table class="table">
+      <thead>
+        <tr>
+          <th></th>
+          <th>店名</th>
+          <th>住所</th>
+          <th>説明</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @shops.each do |shop| %>
+        <tr>
+          <td><%= image_tag shop.image.url, :size => "150x100" %></td>
+          <td>
+            <%= link_to shop_path(shop.id) do %>
+              <%= shop.name %>
+            <% end %>
+          </td>
+          <td><%= shop.area %></td>
+          <td><%= shop.description %></td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+  <div class="pagination my-5"><%= paginate @shops %></div>
+</div>
