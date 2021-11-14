@@ -16,7 +16,7 @@
       <div class="row">
         <% article.images.each do |image| %>
         <div class="col-3 mt-2">
-          <%= image_tag image.url, size: "200x150", class: "img-fluid rounded border border-secondary"%>
+          <%= image_tag image.url, size: "200x150", class: "rounded border border-secondary"%>
           <!--%= image_tag article.images[0].url, :size => "180x120" %>-->
         </div>
         <% end %>
@@ -81,7 +81,7 @@
               <% end %>
             </td>
             <td>
-              <%= favourite.shop.area %>
+              <%= favourite.shop.prefecture_code %>
             </td>
           </tr>
         <% end %>

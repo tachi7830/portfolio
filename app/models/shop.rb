@@ -6,9 +6,6 @@ class Shop < ApplicationRecord
   THUMBNAIL_SIZE = [200, 150]
   mount_uploader :image, ImageUploader
 
-  include JpPrefecture
-  jp_prefecture :prefecture_code
-
   def self.search(search)
     #jp_prefecture公式の検索コード
     #find(Parametersで送られたPrefecture_code(文字列を（to_i）で数値に変換して
