@@ -95,7 +95,7 @@ ActiveRecord::Schema.define(version: 2021_11_13_135811) do
     t.string "image", null: false
     t.string "news", null: false
     t.string "url", null: false
-    t.string "area", null: false
+    t.string "prefecture_code", null: false
     t.string "address", null: false
     t.string "phone_number", null: false
     t.string "opening_hour", null: false

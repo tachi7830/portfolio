@@ -6,7 +6,7 @@ class CreateShops < ActiveRecord::Migration[5.2]
       t.string :image, null: false
       t.string :news, null: false
       t.string :url, null: false
-      t.string :area, null: false
+      t.string :prefecture_code, null: false
       t.string :address, null: false
       t.string :phone_number, null: false
       t.string :opening_hour, null: false
