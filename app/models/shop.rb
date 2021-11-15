@@ -10,7 +10,7 @@ class Shop < ApplicationRecord
     #jp_prefecture公式の検索コード
     #find(Parametersで送られたPrefecture_code(文字列を（to_i）で数値に変換して
     #Prefectureのデータの数値と一致するものを探す。
-    pref = JpPrefecture::Prefecture.find(search[:prefecture_code].to_i)
+    ipref = JpPrefecture::Prefecture.find(search[:prefecture_code])
     where(['name LIKE? OR prefecture_code LIKE?',"%#{search}%", "%#{pref.name}%"])
     #nameカラムから[keyword]と一致するものを探す。
   end

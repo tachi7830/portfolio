@@ -47,6 +47,7 @@
           <div id="star-rate-<%= article.id %>">
             <script>
               // 繰り返し処理でもidをidを一意にできるようにnote_idを入れる
+              $('#star-rate-<%= article.id %>').empty();
               $('#star-rate-<%= article.id %>').raty({
                 size: 30,
                 starOff:  '<%= asset_path('star-off.png') %>',
@@ -56,10 +57,10 @@
                 // 読み込みだけで入力できない
                 readOnly: true,
                 //投稿された星の入力値を読み込む
-                score: <%= article.rate %>,
+                score: <%= article.rate %>
               });
             </script>
-            <%= article.rate%>
+            <%= article.rate %>
           </div>
         </div>
       </div>
@@ -82,3 +83,7 @@
   <% end %>
   <div class="pagination my-5"><strong><%= paginate @articles %></strong></div>
 </div>
+<!--<script>-->
+<!--  $(document).on 'page:restore', ->-->
+<!--  location.reload();-->
+<!--</script>-->

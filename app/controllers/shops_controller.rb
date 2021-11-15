@@ -15,6 +15,7 @@ class ShopsController < ApplicationController
 
   def search
     @searchs = Shop.search(params)  #paramsでParametersの値をすべて持ってくる
+
   end
 
   private
