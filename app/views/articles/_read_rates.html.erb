@@ -1,0 +1,20 @@
+<div class="ml-3">  
+  <div id="star-rate-<%= article.id %>">
+    <script>
+      // .empy();でrateを一度リセットしてから再度読み込む
+      $('#star-rate-<%= article.id %>').empty();
+      $('#star-rate-<%= article.id %>').raty({
+        size: 36,
+        starOff:  '<%= asset_path('star-off.png') %>',
+        starOn : '<%= asset_path('star-on.png') %>',
+        starHalf: '<%= asset_path('star-half.png') %>',
+        half: true,
+        // 読み込みだけで入力できない
+        readOnly: true,
+        //投稿された星の入力値を読み込む
+        score: <%= article.rate %>
+      });
+    </script>
+  </div>
+</div>
+<p class="h5 ml-2"><%= article.rate %></p>
