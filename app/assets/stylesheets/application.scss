@@ -36,3 +36,7 @@
  .pagination {
   justify-content: center;
 }
+
+.pagination>li>a {
+  border: none;     /*枠線をなくす*/
+}
