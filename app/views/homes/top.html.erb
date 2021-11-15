@@ -47,9 +47,9 @@
             <td class="text-center">
               <div class="mt-3 mb-4">
                 <% if article.user.image.present? %>
-                  <%= image_tag article.user.image.url, :size => "50x50"%>
+                  <%= image_tag article.user.image.url, :size => "50x50", class: "border border-secondary rounded"%>
                 <% else %>
-                  <%= image_tag("no_image_user.png", :size => "50x50") %>
+                  <%= image_tag("no_image_user.png", :size => "50x50", class: "border border-secondary rounded") %>
                 <% end %>
               </div>
               <p>
@@ -61,7 +61,7 @@
             <td class="text-center">
               <div class="mt-3">
                 <%= link_to article_path(article.id) do %>
-                  <%= image_tag article.images[0].url, :size => "150x100", class: "rounded mb-2" %>
+                  <%= image_tag article.images[0].url, :size => "150x100", class: "border border-secondary rounded mb-2" %>
                 <% end %>
               </div>
               <p>
@@ -83,9 +83,9 @@
           <div class="col-2 col-md-3 text-center">
             <div class="mb-2">
               <% if article.user.image.present? %>
-                <%= image_tag article.user.image.url, :size => "50x50"%>
+                <%= image_tag article.user.image.url, :size => "50x50", class: "border border-secondary rounded"%>
               <% else %>
-                <%= image_tag("no_image_user.png", :size => "50x50") %>
+                <%= image_tag("no_image_user.png", :size => "50x50", class: "border border-secondary rounded") %>
               <% end %>
             </div>
             <p>
@@ -99,7 +99,7 @@
             <div class="row mb-2">
               <% article.images.each do |image| %>
                 <div class="col-4">
-                  <%= image_tag image.url, size: "120x80", class: "rounded mr-2 mb-1"%>
+                  <%= image_tag image.url, size: "120x80", class: "border border-secondary rounded mr-2 mb-1"%>
                 </div>
               <% end %>
             </div>
