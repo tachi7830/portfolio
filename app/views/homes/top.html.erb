@@ -45,11 +45,11 @@
               <h5>いいね数<%= article.goods.count %></h5>
             </td>
             <td class="text-center">
-              <div class="mt-3 mb-4">
+              <div class="mt-3 mb-2">
                 <% if article.user.image.present? %>
-                  <%= image_tag article.user.image.url, :size => "50x50", class: "border border-secondary rounded"%>
+                  <%= image_tag article.user.image.url, :size => "70x70", class: "border border-secondary rounded"%>
                 <% else %>
-                  <%= image_tag("no_image_user.png", :size => "50x50", class: "border border-secondary rounded") %>
+                  <%= image_tag("no_image_user.png", :size => "70x70", class: "border border-secondary rounded") %>
                 <% end %>
               </div>
               <p>
@@ -83,9 +83,9 @@
           <div class="col-2 col-md-3 text-center">
             <div class="mb-2">
               <% if article.user.image.present? %>
-                <%= image_tag article.user.image.url, :size => "50x50", class: "border border-secondary rounded"%>
+                <%= image_tag article.user.image.url, :size => "70x70", class: "border border-secondary rounded"%>
               <% else %>
-                <%= image_tag("no_image_user.png", :size => "50x50", class: "border border-secondary rounded") %>
+                <%= image_tag("no_image_user.png", :size => "70x70", class: "border border-secondary rounded") %>
               <% end %>
             </div>
             <p>
