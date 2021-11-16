@@ -18,15 +18,22 @@
  @import 'font-awesome';
 
 * {
-   margin: 0;
-   padding: 0;
+  margin: 0;
+  padding: 0;
  }
 
- body {
-  margin: 0;
-  width: 100vw;
-  height: 100vh;
-  background-color:#ffffe0;
+body {
+ margin: 0;
+ width: 100vw;
+ height: 100vh;
+ background-color:#ffffe0;
+ display: flex;
+ flex-flow: column;
+ min-height: 100vh;
+}
+
+main {
+  flex: 1;
 }
 
 .link-border{
@@ -37,10 +44,10 @@
   text-decoration: none;
 }
 
- .pagination {
+.pagination {
   justify-content: center;
 }
 
 .pagination>li>a {
-  border: none;     /*枠線をなくす*/
+  border: none;
 }
