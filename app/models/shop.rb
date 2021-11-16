@@ -7,12 +7,13 @@ class Shop < ApplicationRecord
   mount_uploader :image, ImageUploader
 
   def self.search(search)
-    #jp_prefecture公式の検索コード
-    #find(Parametersで送られたPrefecture_code(文字列を（to_i）で数値に変換して
-    #Prefectureのデータの数値と一致するものを探す。
-    ipref = JpPrefecture::Prefecture.find(search[:prefecture_code])
-    where(['name LIKE? OR prefecture_code LIKE?',"%#{search}%", "%#{pref.name}%"])
-    #nameカラムから[keyword]と一致するものを探す。
+    # %keyword%は検索ワードの前後に文字がついていてもkeyword部分が一致すればデータを持ってくる
+    # AND検索で検索ワードが空欄の場合 %%となり空のデータになる
+    if pref = JpPrefecture::Prefecture.find(search[:prefecture_code])
+      where(['name LIKE? AND prefecture_code LIKE?',"%#{search[:keyword]}%", "%#{pref.name}%"])
+    else
+      where(['name LIKE?',"%#{search[:keyword]}%"])
+    end
   end
 
   def favourited_by?(user)
