@@ -1,11 +1,11 @@
 <div class='container'>
   <div class="row mt-5">
     <div class="col-4 offset-1">
-      <%= image_tag @shop.image.url %>
+      <%= image_tag @shop.image.url, class: "border border-secondary rounded" %>
     </div>
     <div class="col-6 mt-5">
       <div>
-        <h2><%= @shop.name %></h2>
+        <h2><strong><%= @shop.name %></strong></h2>
       </div>
     </div>
     <div class="col-1 mt-5">
@@ -16,29 +16,31 @@
   </div>
   <div class="row mt-5">
     <div class="col-3 offset-2">
-      <h4>News</h4>
+      <h4><strong>News</strong></h4>
     </div>
     <div class="col-4">
-      <h4><%= @shop.news %></h4>
+      <h4><strong><%= @shop.news %></strong></h4>
     </div>
   </div>
-  <div class="row mt-5 text-center">
+  <div class="row col-12 col-lg-10 offset-lg-1 mt-5 text-center">
     <% @breads.each do |bread| %>
-    <div class="col-3">
+    <div class="col-3 col-lg-3">
       <div class="border border-secondary rounded mb-2" style="background-color: #f5deb3;">
-        <div><%= image_tag bread.image.url, :size => "255x200", class: "img-fluid rounded mb-2" %></div>
+        <div><%= image_tag bread.image.url, :size => "255x200", class: "img-fluid border border-secondary rounded" %></div>
         <p><%= bread.name %></p>
         <p><%= bread.price %>円</p>
       </div>
     </div>
     <% end %>
   </div>
-  <div class="text-right"><%= link_to "全ての商品を見る" %> </div>
-  <div class="row mt-5">
-    <div class="col-12 mb-4 text-center">
-      <h4>店舗情報</h4>
-    </div>
-    <table class="table col-8 offset-2">
+  <div class="text-center mt-3 h5">
+    <strong><%= link_to "全ての商品を見る", class: "link-border"%></strong>
+  </div>
+  <div class=" mt-5">
+    <h4 class="mb-4 text-center">
+      <strong>店舗情報</strong>
+    </h4>
+    <table class="table border col-8 offset-2">
       <tr>
         <th>店名</th>
         <td><%= @shop.name %></td>
@@ -69,25 +71,19 @@
       </tr>
     </table>
   </div>
-  <div class="row">
-    <div class="col-12 mt-5 text-center">
-      <h4>レビュー一覧</h4>
-    </div>
-  </div>
   <div>
+    <h4 class="mt-5 text-center">
+      <strong>レビュー</strong>
+    </h4>
   <% @articles.each do |article| %>
     <div class="row mt-5">
       <div class="col-2 text-center">
         <div class="mb-2 mt-4">
-          <% if article.user.image.present? %>
-            <%= image_tag article.user.image.url, :size => "80x80"%>
-          <% else %>
-            <%= image_tag("no_image_user.png", :size => "80x80") %>
-          <% end %>
+          <%= render "users/user_images", article: article %>
         </div>
         <p>
-          <%= link_to user_path(article.user) do %>
-            <%= article.user.name %>さん
+          <%= link_to user_path(article.user),class: "link-border" do %>
+            <strong><%= article.user.name %>さん</strong>
           <% end %>
         </p>
         <p><%= article.created_at.strftime("%Y/%m/%d") %></p>
@@ -96,37 +92,23 @@
         <div class="row">
           <% article.images.each do |image| %>
             <div class="col-3">
-              <%= image_tag image.url, :size => "150x100", class: "img-fluid rounded mb-2" %>
+              <%= image_tag image.url, :size => "150x100", class: "img-fluid border border-secondary rounded mb-2" %>
             </div>
           <% end %>
         </div>
         <div class="col-9 mt-3">
           <p><%= article.bread_name %></p>
           <p><%= article.review %></p>
-          <div id="star-rate-<%= article.id %>">
-            <script>
-              // 繰り返し処理でもidをidを一意にできるようにnote_idを入れる
-              $('#star-rate-<%= article.id %>').raty({
-                size: 30,
-                starOff:  '<%= asset_path('star-off.png') %>',
-                starOn : '<%= asset_path('star-on.png') %>',
-                starHalf: '<%= asset_path('star-half.png') %>',
-                half: true,
-                // 読み込みだけで入力できない
-                readOnly: true,
-                //投稿された星の入力値を読み込む
-                score: <%= article.rate %>,
-              });
-            </script>
-            <%= article.rate %>
-          </div>
+          
         </div>
         <div class="row col-9 mt-4 mb-3">
           <div id="good_buttons_<%= article.id %>">
             <%= render "goods/goods", article: article %>
           </div>
           <div>
-            <%= link_to "コメントする", article_path(article.id), class: "ml-4 mr-5"%>
+            <strong>
+              <%= link_to "コメントする", article_path(article.id), class: "link-border ml-4 mr-5"%>
+            </strong>
           </div>
         </div>
       </div>

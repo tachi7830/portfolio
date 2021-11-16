@@ -12,11 +12,11 @@
   </head>
   <body>
     <header class="header">
-      <nav class="navbar navbar-expand-lg navbar-light bg-dark" >
+      <nav class="navbar navbar-expand-lg navbar-light" style="background-color:#8d6449;">
         <div class="container">
           <div>
             <%= link_to root_path, class: "navbar-brand", local: true do %>
-              <%= image_tag 'logo.png', size: "150x100"%>
+              <%= image_tag 'logo.png', size: "150x100", class: "border border-secondary rounded"%>
               <h5 class="text-center text-light mt-1">全国パン図鑑</h5>
             <% end %>
           </div>
@@ -51,7 +51,7 @@
       </nav>
     </header>
     <%= yield %>
-    <footer class="bg-dark mt-5">
+    <footer class="b mt-5" style="background-color:#8d6449;">
       <div class="container">
         <div class="row">
           <p class="py-4"></p>

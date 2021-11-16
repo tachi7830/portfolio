@@ -42,7 +42,7 @@
           <div class="col-9"><%= article.review %></div>
         </div>
         <div class="row mt-3">
-          <p class="col-2">評価</p>
+          <p class="col-2 mr-3">評価</p>
           <%= render 'articles/read_rates', article: article %>
         </div>
         <div class="row col-12 mb-3">
@@ -64,7 +64,3 @@
   <% end %>
   <div class="pagination my-5"><strong><%= paginate @articles %></strong></div>
 </div>
-<!--<script>-->
-<!--  $(document).on 'page:restore', ->-->
-<!--  location.reload();-->
-<!--</script>-->
