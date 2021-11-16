@@ -1,10 +1,10 @@
 <div class='container'>
   <h2 class="my-5 text-center">記事一覧</h2>
   <% @articles.each do |article| %>
-    <div class="row border border-secondary rounded mb-4">
-      <div class="col-2 text-center mt-5">
+    <div class="row col-lg-10 offset-lg-1 border border-secondary rounded mb-4">
+      <div class="col-12 col-md-3 text-center mt-5">
         <div class="mb-2">
-          <%= render "users/user_images", article: article %> 
+          <%= render "users/user_images", article: article %>
         </div>
         <p>
           <%= link_to user_path(article.user), class: "link-border" do %>
@@ -13,36 +13,36 @@
         </p>
         <p><%= article.created_at.strftime("%Y/%m/%d") %></p>
       </div>
-      <div class="col-10">
+      <div class="col-9">
         <div class="row my-3">
           <% article.images.each do |image| %>
-            <div class="col-6 col-md-4 col-lg-3 mb-3">
-              <%= image_tag image.url, size: "180x130", class: "border border-secondary rounded mr-2 mb-1"%>
+            <div class="col-6 col-md-4 mb-3">
+              <%= image_tag image.url, size: "180x130", class: "img-fluid border border-secondary rounded mr-2 mb-1"%>
             </div>
           <% end %>
         </div>
         <div class="row">
-          <p class="col-2">店名</p>
-          <div class="col-9">
+          <p class="col-4 col-md-3">店名</p>
+          <div class="col-8 col-md-9">
             <%= link_to shop_path(article.shop.id), class: "link-border" do %>
               <strong><%= article.shop.name %></strong>
             <% end %>
           </div>
         </div>
         <div class="row">
-          <p class="col-2">都道府県</p>
-          <div class="col-9"><%= article.prefecture.name %></div>
+          <p class="col-4 col-md-3">都道府県</p>
+          <div class="col-8 col-md-9"><%= article.prefecture.name %></div>
         </div>
         <div class="row">
-          <p class="col-2">購入品</p>
-          <div class="col-9"><%= article.bread_name %></div>
+          <p class="col-4 col-md-3">購入品</p>
+          <div class="col-8 col-md-9"><%= article.bread_name %></div>
         </div>
         <div class="row">
-          <p class="col-2">レビュー</p>
-          <div class="col-9"><%= article.review %></div>
+          <p class="col-4 col-md-3">レビュー</p>
+          <div class="col-8 col-md-9"><%= article.review %></div>
         </div>
         <div class="row mt-3">
-          <p class="col-2 mr-3">評価</p>
+          <p class="col-4 col-md-3 mr-3">評価</p>
           <%= render 'articles/read_rates', article: article %>
         </div>
         <div class="row col-12 mb-3">
