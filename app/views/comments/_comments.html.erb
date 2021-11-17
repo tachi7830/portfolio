@@ -1,17 +1,24 @@
-<table>
-  <% article.comments.each do |comment| %>
+<% article.comments.each do |comment| %>
   <% comment_user = comment.user %>
-  <tr>
-    <td>
-      <%= link_to user_path(article.user) do %>
-        <%= image_tag article.user.image.url %><br>
-        <%= article.user.name %>
+  <div class="col-6 col-md-3 offset-1">
+    <div class="text-center">
+      <%= render "users/user_images", article: article %>
+      <p>
+        <%= link_to user_path(article.user), class: "link-border" do %>
+          <strong><%= article.user.name %>さん</strong>
+        <% end %>
+      </p>
+    </div>
+  </div>
+  <div class="col-8 offset-3 col-md-6 col-lg-5 offset-md-0">
+    <%= comment.comment %>
+    <p class="mt-4">
+      <% if comment_user == current_user %>
+      <strong>
+        <%= link_to '削除する', article_comment_path(comment.article.id, comment.id), class: "link-border", method: :delete, remote: true %>
+      </strong>
       <% end %>
-    </td>
-    <td><%= comment.comment %></td>
-    <% if current_user == comment_user %>
-    <td><%= link_to '削除する', article_comment_path(comment.article.id, comment.id), method: :delete, remote: true %></td>
-    <% end %>
-  </tr>
-  <% end %>
-</table>
+    </p>
+  </div>
+<% end %>
+

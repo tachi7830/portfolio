@@ -6,13 +6,18 @@ class Shop < ApplicationRecord
   THUMBNAIL_SIZE = [200, 150]
   mount_uploader :image, ImageUploader
 
-  def self.search(keyword)
-    #jp_prefecture公式の検索コード 
-    #find(Parametersで送られたPrefecture_code(文字列を（to_i）で数値に変換して
-    #Prefectureのデータの数値と一致するものを探す。
-    pref = JpPrefecture::Prefecture.find(keyword[:prefecture_code].to_i)
-    where(['name LIKE? OR area LIKE?',"%#{keyword}%", "%#{pref.name}%"])
-    #nameカラムから[keyword]と一致するものを探す。
+  geocoded_by :address
+  after_validation :geocode
+  #登録された住所を緯度経度に変換
+
+  def self.search(search)
+    # %keyword%は検索ワードの前後に文字がついていてもkeyword部分が一致すればデータを持ってくる
+    # AND検索で検索ワードが空欄の場合 %%となり空のデータになる
+    if pref = JpPrefecture::Prefecture.find(search[:prefecture_code])
+      where(['name LIKE? AND address LIKE?',"%#{search[:keyword]}%", "%#{pref.name}%"])
+    else
+      where(['name LIKE?',"%#{search[:keyword]}%"])
+    end
   end
 
   def favourited_by?(user)

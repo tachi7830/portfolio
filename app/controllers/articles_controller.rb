@@ -22,6 +22,11 @@ class ArticlesController < ApplicationController
 
   def edit
     @article = Article.find(params[:id])
+    if @article.user == current_user
+      render "edit"
+    else
+      redirect_to articles_path
+    end
   end
 
   def update

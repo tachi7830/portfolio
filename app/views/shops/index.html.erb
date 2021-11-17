@@ -1,7 +1,7 @@
 <div class='container'>
   <div class="row">
     <h2 class="col-12 my-5 text-center">パン屋さん一覧</h2>
-    <table class="table">
+    <table class="table border">
       <thead>
         <tr>
           <th></th>
@@ -13,13 +13,13 @@
       <tbody>
         <% @shops.each do |shop| %>
         <tr>
-          <td><%= image_tag shop.image.url, :size => "150x100" %></td>
+          <td><%= image_tag shop.image.url, :size => "150x100", class: "border border-secondary rounded" %></td>
           <td>
-            <%= link_to shop_path(shop.id) do %>
-              <%= shop.name %>
+            <%= link_to shop_path(shop.id), class: "link-border" do %>
+              <strong><%= shop.name %></strong>
             <% end %>
           </td>
-          <td><%= shop.area %></td>
+          <td><%= shop.address %></td>
           <td><%= shop.description %></td>
         </tr>
         <% end %>

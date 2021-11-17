@@ -1,9 +1,9 @@
 <% if article.gooded_by?(current_user) %>
-  <%= link_to article_goods_path(article), method: :delete, remote: true do %>
-  いいね<i class="fas fa-heart" style="color:#d9333f;"><%= article.goods.count %></i>
+  <%= link_to article_goods_path(article), class: "link-border", method: :delete, remote: true do %>
+    <strong>いいね<i class="fas fa-heart" style="color:#d9333f;"><%= article.goods.count %></i></strong>
   <% end %>
 <% else %>
-  <%= link_to article_goods_path(article), method: :post, remote: true do %>
-  いいね<i class="far fa-heart"><%= article.goods.count %></i>
+  <%= link_to article_goods_path(article), class: "link-border", method: :post, remote: true do %>
+    <strong>いいね<i class="far fa-heart"><%= article.goods.count %></i></strong>
   <% end %>
 <% end %>

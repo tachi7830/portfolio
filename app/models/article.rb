@@ -11,7 +11,7 @@ class Article < ApplicationRecord
   mount_uploaders :images, ImageUploader
 
   def gooded_by?(user)
-    goods.where(user_id: user.id).exists?
+    goods.where(user: user).exists?
   end
 
   validates :rate, presence: true

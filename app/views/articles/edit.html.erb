@@ -1,30 +1,33 @@
 <div class='container'>
   <div class="row">
     <div class="col-12">
-      <h2 class="my-4 offset-1">記事編集</h2>
+      <h2 class="my-5 text-center">記事編集</h2>
       <%= form_with model: @article, local: true do |f| %>
         <div class="form-group row">
-          <%= f.label :"商品画像", class: "col-3 h5"%>
-          <%= f.file_field :image , multiple: true%>
+          <%= f.label :"商品画像", class: "col-3 offset-lg-1  h5"%>
+          <p><%= f.file_field :images , multiple: true %></p>
+          <div class="offset-3 offset-lg-5">
+            <p>ドラッグで複数選択可能です</p>
+          </div>
         </div>
         <div class="field form-group row">
-          <%= f.label :"店名", class: "col-3 h5" %>
+          <%= f.label :"店名", class: "col-3 offset-lg-1 h5" %>
           <%= f.collection_select :shop_id, Shop.all, :id, :name, include_blank: "選択して下さい" %>
         </div>
         <div class="field form-group row">
-          <%= f.label :"購入した物", class: "col-3 h5" %>
-          <%= f.text_field :bread_name, autofocus: true, placeholder:"クロワッサン", class: "form-control col-8" %>
-        </div>
-        <div class="field form-group row">
-          <%= f.label :"エリア", class: "col-3 h5" %>
+          <%= f.label :"都道府県", class: "col-3 offset-lg-1 h5" %>
           <%= f.collection_select :prefecture_code, JpPrefecture::Prefecture.all, :code, :name, include_blank: "選択して下さい" %>
         </div>
         <div class="field form-group row">
-          <%= f.label :"感想", class: "col-3 h5" %>
-          <%= f.text_area :review, :size=>"60x12", class: "form-control col-8" %>
+          <%= f.label :"購入品", class: "col-3 offset-lg-1 h5" %>
+          <%= f.text_field :bread_name, autofocus: true, placeholder:"クロワッサン", class: "form-control col-8 col-lg-6" %>
+        </div>
+        <div class="field form-group row">
+          <%= f.label :"レビュー", class: "col-3 offset-lg-1 h5" %>
+          <%= f.text_area :review, :size=>"60x8", class: "form-control col-8 col-lg-6" %>
         </div>
         <div class="field form-group row" id="star" >
-          <%= f.label :"評価", class: "col-3 h5" %>
+          <%= f.label :"評価", class: "col-3 offset-lg-1 h5" %>
           <%= f.hidden_field :rate, id: :review_star, class: "form-control" %>
         </div>
         <script>
@@ -38,7 +41,7 @@
           });
         </script>
         <div class="row">
-          <%= f.submit "投稿",class: 'btn btn_success btn-lg offset-3 mt-3' %>
+          <%= f.submit "投稿",class: 'btn btn-primary offset-3 offset-lg-4 mt-2 px-4' %>
         </div>
       <% end %>
     </div>

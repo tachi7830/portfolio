@@ -18,10 +18,35 @@
  @import 'font-awesome';
 
 * {
-   margin: 0;
-   padding: 0;
+  margin: 0;
+  padding: 0;
  }
- 
- .pagination {
+
+body {
+ margin: 0;
+ width: 100vw;
+ height: 100vh;
+ display: flex;
+ flex-flow: column;
+ min-height: 100vh;
+}
+
+main {
+  flex: 1;
+}
+
+.link-border{
+  color: #e17b34;
+}
+
+.link-border:hover{
+  text-decoration: none;
+}
+
+.pagination {
   justify-content: center;
+}
+
+.pagination>li>a {
+  border: none;
 }

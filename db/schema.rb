@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_05_034107) do
+ActiveRecord::Schema.define(version: 2021_11_13_135811) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
@@ -67,6 +67,14 @@ ActiveRecord::Schema.define(version: 2021_11_05_034107) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "contacts", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "email", null: false
+    t.text "message", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "favourites", force: :cascade do |t|
     t.integer "user_id", null: false
     t.integer "shop_id", null: false
@@ -87,8 +95,9 @@ ActiveRecord::Schema.define(version: 2021_11_05_034107) do
     t.string "image", null: false
     t.string "news", null: false
     t.string "url", null: false
-    t.string "area", null: false
     t.string "address", null: false
+    t.float "latitude"
+    t.float "longitude"
     t.string "phone_number", null: false
     t.string "opening_hour", null: false
     t.string "closed_day", null: false
