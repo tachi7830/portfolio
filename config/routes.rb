@@ -3,8 +3,8 @@ Rails.application.routes.draw do
   devise_for :users
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
-  get 'shops/search' => 'shops#search'
   
+  get 'shops/search' => 'shops#search'
   get 'contact' => 'contacts#new'
   
   resources :articles do

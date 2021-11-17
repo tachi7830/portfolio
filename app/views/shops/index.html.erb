@@ -1,7 +1,7 @@
 <div class='container'>
   <div class="row">
     <h2 class="col-12 my-5 text-center">パン屋さん一覧</h2>
-    <table class="table border">
+    <table class="table border border-secondary">
       <thead>
         <tr>
           <th></th>
@@ -19,7 +19,7 @@
               <strong><%= shop.name %></strong>
             <% end %>
           </td>
-          <td><%= shop.prefecture_code %></td>
+          <td><%= shop.address %></td>
           <td><%= shop.description %></td>
         </tr>
         <% end %>

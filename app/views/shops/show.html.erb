@@ -40,7 +40,7 @@
     <h4 class="mb-4 text-center">
       <strong>店舗情報</strong>
     </h4>
-    <table class="table border col-8 offset-2">
+    <table class="table border col-10 offset-1 col-lg-8 offset-lg-2 col-xl-6 offset-xl-3">
       <tr>
         <th>店名</th>
         <td><%= @shop.name %></td>
@@ -55,7 +55,9 @@
       </tr>
       <tr>
         <th>住所</th>
-        <td><%= @shop.prefecture_code %><%= @shop.address %></td>
+        <td>
+          <%= @shop.address %>
+        </td>
       </tr>
       <tr>
         <th>電話番号</th>
@@ -71,7 +73,27 @@
       </tr>
     </table>
   </div>
-  <div>
+  <div class="col-10 offset-1 col-lg-8 offset-lg-2 col-xl-6 offset-xl-3 border border-secondary rounded" id="map"></div>
+    <style>
+       #map {
+       height: 300px;
+      }
+    </style>
+    <script>
+    function initMap() {
+      var uluru = {lat: <%= @shop.latitude %>, lng: <%= @shop.longitude %>};
+      var map = new google.maps.Map(document.getElementById('map'), {
+      zoom: 16,
+      center: uluru
+      });
+      var marker = new google.maps.Marker({
+        position: uluru,
+        map: map
+      });
+         }
+      </script>
+      <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAP'] %>&callback=initMap"async defer></script>
+    </div>
     <h4 class="mt-5 text-center">
       <strong>レビュー</strong>
     </h4>

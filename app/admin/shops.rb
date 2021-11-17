@@ -1,12 +1,11 @@
 ActiveAdmin.register Shop do
-  permit_params :name, :description, :news, :url, :prefecture_code, :address, :phone_number, :opening_hour, :closed_day, :image
+  permit_params :name, :description, :news, :url, :address, :latitude, :longitude, :phone_number, :opening_hour, :closed_day, :image
 
     form do |f|
       f.inputs "Shops" do
         f.input :name
         f.input :description
         f.input :news
-        f.input :prefecture_code, as: :select, collection: JpPrefecture::Prefecture.all.map {|prefecture| [prefecture.name]}
         f.input :address
         f.input :url
         f.input :phone_number
@@ -22,8 +21,9 @@ ActiveAdmin.register Shop do
         row :name
         row :description
         row :news
-        row :prefecture_code
         row :address
+        row :latitude
+        row :longitude
         row :url
         row :phone_number
         row :opening_hour
