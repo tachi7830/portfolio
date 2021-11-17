@@ -91,14 +91,14 @@
         map: map
       });
          }
-      </script>
-      <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAP'] %>&callback=initMap"async defer></script>
-    </div>
-    <h4 class="mt-5 text-center">
-      <strong>レビュー</strong>
-    </h4>
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAP'] %>&callback=initMap"async defer></script>
+  </div>
+  <h4 class="mt-5 text-center">
+    <strong>レビュー</strong>
+  </h4>
   <% @articles.each do |article| %>
-    <div class="row mt-5">
+    <div class="row border border-secondary rounded mt-5">
       <div class="col-2 text-center">
         <div class="mb-2 mt-4">
           <%= render "users/user_images", article: article %>
@@ -121,23 +121,7 @@
         <div class="col-9 mt-3">
           <p><%= article.bread_name %></p>
           <p><%= article.review %></p>
-          <div id="star-rate-<%= article.id %>">
-            <script>
-              // 繰り返し処理でもidをidを一意にできるようにnote_idを入れる
-              $('#star-rate-<%= article.id %>').raty({
-                size: 30,
-                starOff:  '<%= asset_path('star-off.png') %>',
-                starOn : '<%= asset_path('star-on.png') %>',
-                starHalf: '<%= asset_path('star-half.png') %>',
-                half: true,
-                // 読み込みだけで入力できない
-                readOnly: true,
-                //投稿された星の入力値を読み込む
-                score: <%= article.rate %>,
-              });
-            </script>
-            <%= article.rate %>
-          </div>
+          <%= render 'articles/read_rates', article: article %>
         </div>
         <div class="row col-9 mt-4 mb-3">
           <div id="good_buttons_<%= article.id %>">
@@ -152,6 +136,5 @@
       </div>
     </div>
   <% end %>
-  </div>
   <div class="pagination my-5"><%= paginate @articles %></div>
 </div>

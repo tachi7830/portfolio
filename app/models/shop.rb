@@ -14,7 +14,7 @@ class Shop < ApplicationRecord
     # %keyword%は検索ワードの前後に文字がついていてもkeyword部分が一致すればデータを持ってくる
     # AND検索で検索ワードが空欄の場合 %%となり空のデータになる
     if pref = JpPrefecture::Prefecture.find(search[:prefecture_code])
-      where(['name LIKE? AND prefecture_code LIKE?',"%#{search[:keyword]}%", "%#{pref.name}%"])
+      where(['name LIKE? AND address LIKE?',"%#{search[:keyword]}%", "%#{pref.name}%"])
     else
       where(['name LIKE?',"%#{search[:keyword]}%"])
     end
