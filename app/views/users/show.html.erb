@@ -31,7 +31,7 @@
                 <% end %>
             </div>
             <div class="col-4">
-              <%= favourite.shop.prefecture_code %>
+              <%= favourite.shop.address %>
             </div>
           </div>
         <% end %>
@@ -82,7 +82,11 @@
               </div>
               <div>
                 <strong>
-                  <%= link_to "コメントする", article_path(article.id), class: "link-border mr-5" %>
+                  <% if user_signed_in? %>
+                    <%= link_to "コメントする", article_path(article.id), class: "link-border mr-5" %>
+                  <% else %>
+                    <%= link_to "コメントする", new_user_session_path, class: "link-border mr-5" %>
+                  <% end %>
                   <% if @user == current_user %>
                     <%= link_to "編集", edit_article_path(article.id), class: "link-border mr-5" %>
                     <%= link_to "削除", article_path(article.id),class: "link-border", method: :delete, "data-confirm" => "本当に削除しますか？"%>
