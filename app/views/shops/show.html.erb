@@ -34,7 +34,7 @@
     <% end %>
   </div>
   <div class="text-center mt-3 h5">
-    <strong><%= link_to "全ての商品を見る", class: "link-border"%></strong>
+    <strong><%= link_to "全ての商品を見る", shop_breads_path(@shop.id), class: "link-border" %></strong>
   </div>
   <div class=" mt-5">
     <h4 class="mb-4 text-center">
@@ -129,7 +129,11 @@
           </div>
           <div>
             <strong>
-              <%= link_to "コメントする", article_path(article.id), class: "link-border ml-4 mr-5"%>
+              <% if user_signed_in? %>
+                <%= link_to "コメントする", article_path(article.id), class: "link-border ml-5" %>
+              <% else %>
+                <%= link_to "コメントする", new_user_session_path, class: "link-border ml-5" %>
+              <% end %>
             </strong>
           </div>
         </div>

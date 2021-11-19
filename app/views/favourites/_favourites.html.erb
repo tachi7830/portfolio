@@ -1,9 +1,15 @@
-<% if @shop.favourited_by?(current_user) %>
-  <%= link_to shop_favourites_path(@shop), method: :delete, remote: true do %>
-    <i class="fas fa-star h3" style="color:#ffc000;"><%= shop.favourites.count %></i>
+<% if user_signed_in? %>
+  <% if @shop.favourited_by?(current_user) %>
+    <%= link_to shop_favourites_path(@shop), method: :delete, remote: true do %>
+      <i class="fas fa-star h3" style="color:#ffc000;"><%= shop.favourites.count %></i>
+    <% end %>
+  <% else %>
+    <%= link_to shop_favourites_path(@shop), method: :post, remote: true do %>
+      <i class="far fa-star h3"><%= shop.favourites.count %></i>
+    <% end %>
   <% end %>
 <% else %>
-  <%= link_to shop_favourites_path(@shop), method: :post, remote: true do %>
-    <i class="far fa-star h3"><%= shop.favourites.count %></i>
+  <%= link_to new_user_session_path, local: true do %>
+    <i class="fas fa-star h3" style="color:#ffc000;"><%= shop.favourites.count %></i>
   <% end %>
 <% end %>

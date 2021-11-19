@@ -13,11 +13,13 @@
       <tbody>
         <% @searchs.each do |search| %>
         <tr>
-          <td><%= image_tag search.image.url, :size => "150x100" %></td>
+          <td><%= image_tag search.image.url, :size => "150x100", class: "img-fluid border border-secondary rounded" %></td>
           <td>
-            <%= link_to shop_path(search.id) do %>
-              <%= search.name %>
-            <% end %>
+            <strong>
+              <%= link_to shop_path(search.id), class: "link-border" do %>
+                <%= search.name %>
+              <% end %>
+            </strong>
           </td>
           <td><%= search.address %></td>
           <td><%= search.description %></td>
@@ -26,4 +28,5 @@
       </tbody>
     </table>
   </div>
+  <div class="pagination my-5"><%= paginate @searchs %></div>
 </div>
