@@ -63,7 +63,7 @@ Shop.create!([
   opening_hour: "AM10:00~PM18:00",
   closed_day: "木曜日"},
 
-  {name: "ベーカリー遠藤",
+  {name: "ベーカリー佐藤",
   description: "よろしくお願いします5",
   image: File.open("./app/assets/images/shop/shop5.jpg"),
   news: "新商品が出ました5",
