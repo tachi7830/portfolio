@@ -1,0 +1,17 @@
+<div class='container'>
+  <h2 class="text-center my-5">商品一覧</h2>
+  <div class="row mt-5">
+    <div class="row col-12 col-lg-10 offset-lg-1 mt-5 text-center">
+    <% @breads.each do |bread| %>
+    <div class="col-3 col-lg-3">
+      <div class="border border-secondary rounded mb-2">
+        <div><%= image_tag bread.image.url, :size => "255x200", class: "img-fluid border border-secondary rounded" %></div>
+        <p><%= bread.name %></p>
+        <p><%= bread.price %>円</p>
+      </div>
+    </div>
+    <% end %>
+  </div>
+  </div>
+</div>
+  

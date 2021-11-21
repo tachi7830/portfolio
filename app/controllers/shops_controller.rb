@@ -9,13 +9,8 @@ class ShopsController < ApplicationController
     @breads = @shop.breads.all.order("id DESC").limit(8)
   end
 
-  def bread_all
-    @shop = Shop.find(params[:shop_id])
-  end
-
   def search
-    @searchs = Shop.search(params)  #paramsでParametersの値をすべて持ってくる
-
+    @searchs = Shop.search(params).page(params[:page]).per(10)  #paramsでParametersの値をすべて持ってくる
   end
 
   private
