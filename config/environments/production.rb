@@ -62,6 +62,16 @@ Rails.application.configure do
   # Use a real queuing backend for Active Job (and separate queues per environment)
   # config.active_job.queue_adapter     = :resque
   # config.active_job.queue_name_prefix = "portfolio_#{Rails.env}"
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    address: 'smtp.gmail.com',
+    port: 587, #Gメールのポート
+    domain: 'gmail.com',
+    user_name: ENV['GMAIL'], #自分のメールアドレス
+    password: ENV['APP_PASSWORD'],  #アプリパスワード
+    authentication: 'plain',
+    enable_starttls_auto: true
+  }
 
   config.action_mailer.perform_caching = false
 

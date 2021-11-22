@@ -32,7 +32,6 @@ Rails.application.configure do
 
   # Don't care if the mailer can't send.
   config.action_mailer.raise_delivery_errors = true
-  #config.action_mailer.default_url_options = { host: '25614ce17318418695b3f26f142eb5c7.vfs.cloud9.ap-northeast-1.amazonaws.com', port: 8081 }
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
     address: 'smtp.gmail.com',
