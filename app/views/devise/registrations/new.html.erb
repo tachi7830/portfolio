@@ -2,22 +2,22 @@
   <h2 class="text-center my-5">会員登録</h2>
   <div class="row">
     <div class="col-12">
-    <%= form_with model: @user, url: user_session_path, local: true do |f| %>
+    <%= form_with model: @user, url: user_registration_path, local: true do |f| %>
       <div class="row field form-group">
         <%= f.label :"名前", class: "col-4 col-lg-3 offset-2" %>
-        <%= f.text_field :name, autofocus: true, autocomplete: "name", class: "col-4 form-control"%>
+        <%= f.text_field :name, autofocus: true, class: "col-4 form-control"%>
       </div>
       <div class="row field form-group">
         <%= f.label :"メールアドレス", class: "col-4 col-lg-3 offset-2"%>
-        <%= f.email_field :email, autocomplete: "email", class: "col-4 form-control" %>
+        <%= f.email_field :email, class: "col-4 form-control" %>
       </div>
       <div class="row field form-group mt-4">
         <%= f.label :"パスワード(6文字以上)", class: "col-4 col-lg-3 offset-2" %>
-        <%= f.password_field :password, autocomplete: "password", class: "col-4 form-control" %>
+        <%= f.password_field :password, class: "col-4 form-control" %>
       </div>
       <div class="field form-group row">
         <%= f.label :"パスワード(確認用)", class: "col-4 col-lg-3 offset-2" %>
-        <%= f.password_field :password_confirmation, autocomplete: "password", class: "col-4 form-control" %>
+        <%= f.password_field :password_confirmation, class: "col-4 form-control" %>
       </div>
       <div class="row actions text-center mt-4">
         <%= f.submit "登録" ,class: 'btn btn-primary offset-6 offset-lg-5 px-3'%>
