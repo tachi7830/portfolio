@@ -1,4 +1,7 @@
 class UsersController < ApplicationController
+  before_action :authenticate_user!, except: [:show]
+  before_action :ensure_correct_user, only: [:edit, :update]
+
   def show
     @user = User.find(params[:id])
     @articles = @user.articles.page(params[:page]).per(5).order("id DESC")
@@ -9,11 +12,6 @@ class UsersController < ApplicationController
 
   def edit
     @user = User.find(params[:id])
-    if @user == current_user
-      render "edit"
-    else
-      redirect_to root_path
-    end
   end
 
   def update
@@ -29,5 +27,11 @@ class UsersController < ApplicationController
     params.require(:user).permit(:name, :image, :email )
   end
 
+  def ensure_correct_user
+    @user = User.find(params[:id])
+    unless @user == current_user
+      redirect_to user_path(current_user)
+    end
+  end
 end
 

@@ -1,24 +1,26 @@
 <% article.comments.each do |comment| %>
   <% comment_user = comment.user %>
-  <div class="col-6 col-md-3 offset-1">
-    <div class="text-center">
-      <%= render "users/user_images", article: article %>
-      <p>
-        <%= link_to user_path(article.user), class: "link-border" do %>
-          <strong><%= article.user.name %>さん</strong>
+  <div class="row col-8 offset-2 rounded border border-secondary mb-2">
+    <div class="col-6 col-md-3 mt-3">
+      <div class="text-center">
+        <%= render "users/user_images", article: article %>
+        <p>
+          <%= link_to user_path(article.user), class: "link-border" do %>
+            <strong><%= article.user.name %></strong>
+          <% end %>
+        </p>
+      </div>
+    </div>
+    <div class="col-8 offset-2 col-md-9 offset-md-0 mt-3">
+      <%= comment.comment %>
+      <p class="mt-4">
+        <% if comment_user == current_user %>
+        <strong>
+          <%= link_to '削除する', article_comment_path(comment.article.id, comment.id), class: "link-border", method: :delete, remote: true %>
+        </strong>
         <% end %>
       </p>
     </div>
-  </div>
-  <div class="col-8 offset-3 col-md-6 col-lg-5 offset-md-0">
-    <%= comment.comment %>
-    <p class="mt-4">
-      <% if comment_user == current_user %>
-      <strong>
-        <%= link_to '削除する', article_comment_path(comment.article.id, comment.id), class: "link-border", method: :delete, remote: true %>
-      </strong>
-      <% end %>
-    </p>
   </div>
 <% end %>
 

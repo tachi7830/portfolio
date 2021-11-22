@@ -1,4 +1,6 @@
 class ArticlesController < ApplicationController
+  before_action :authenticate_user!, except: [:index]
+  before_action :ensure_correct_user, {only: [:edit, :update, :destroy]}
 
   def index
     @articles = Article.order("id DESC").page(params[:page]).per(5)
@@ -22,11 +24,6 @@ class ArticlesController < ApplicationController
 
   def edit
     @article = Article.find(params[:id])
-    if @article.user == current_user
-      render "edit"
-    else
-      redirect_to articles_path
-    end
   end
 
   def update
@@ -45,6 +42,13 @@ class ArticlesController < ApplicationController
 
   def article_params
     params.require(:article).permit(:user_id, :shop_id, :prefecture_code, :bread_name, :review, :rate, { images: [] } )
+  end
+
+  def ensure_correct_user
+    @article = Article.find(params[:id])
+    unless @article.user == current_user
+      redirect_to articles_path
+    end
   end
 
 end
