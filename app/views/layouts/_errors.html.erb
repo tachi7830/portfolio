@@ -1,0 +1,7 @@
+<div class="text-center mb-5">
+  <% if model.errors.any? %>
+    <% model.errors.full_messages.each do |message| %>
+      <%= message %><br>
+    <% end %>
+  <% end %>
+</div>

@@ -42,6 +42,9 @@
       <%= render 'comments/comments', article: @article, comment: @comment %>
     </div>
     <div class="form-group">
+      <div id="comments_error">
+        <%= render 'layouts/errors', model: @comment %>
+      </div>
       <%= form_with model:[@article,@comment], remote: true do |f| %>
         <%= f.label "コメント", class: "offset-2 h5" %>
         <%= f.text_area :comment, size:"50x5", class: "form-control col-8 offset-2" %><br>

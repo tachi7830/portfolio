@@ -1,12 +1,14 @@
 class CommentsController < ApplicationController
   before_action :authenticate_user!
-  
+
   def create
     @article = Article.find(params[:article_id])
     @comment = Comment.new(comment_params)
     @comment.article_id = @article.id
     @comment.user_id = current_user.id
-    @comment.save
+    unless @comment.save
+      render "error"
+    end
   end
 
   def destroy

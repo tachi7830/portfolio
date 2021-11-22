@@ -1,5 +1,6 @@
 <div class='container'>
   <h2 class="my-5 text-center">お問合せ</h2>
+  <%= render 'layouts/errors', model: @contact %>
   <div class="row">
     <div class="col-8 offset-2">
       <%= form_with model: @contact, url: contacts_path, local: true do |f| %>

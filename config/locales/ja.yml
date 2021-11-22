@@ -1,0 +1,17 @@
+ja:
+  activerecord:
+    attributes:
+      article:
+        shop_id: 店名
+        bread_name: 購入品
+        images: 画像
+        prefecture_code: 都道府県
+        review: レビュー
+        rate: 評価
+      user:
+        name: 名前
+        email: メールアドレス
+        password: パスワード
+        password_confirmation: 確認用パスワード
+      comment:
+        comment: コメント

@@ -1,5 +1,8 @@
 <div class='container'>
   <h2 class="text-center my-5">ログイン</h2>
+  <div class="text-center mb-5">
+    <%= flash[:alert]%>
+  </div>
   <div class="row">
     <div class="col-12">
     <%= form_with model: @user, url: user_session_path, local: true do |f| %>

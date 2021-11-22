@@ -14,6 +14,11 @@ class Article < ApplicationRecord
     goods.where(user: user).exists?
   end
 
+  validates :shop_id, presence: true
+  validates :images, presence: true
+  validates :prefecture_code, presence: true
+  validates :bread_name, presence: true
+  validates :review, presence: true
   validates :rate, presence: true
   validates :rate, numericality: {
     #rateカラムでは整数のみ許可したい
