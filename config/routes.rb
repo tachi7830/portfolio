@@ -1,13 +1,13 @@
 Rails.application.routes.draw do
-  get 'breads/index'
+
   root :to => "homes#top"
   devise_for :users
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
 
   get 'shops/search' => 'shops#search'
-  get 'contact' => 'contacts#new'
-
+  resources :contacts, only: [:new, :create]
+  get "contacts/thanks", to: "contacts#thanks"
 
   resources :articles do
     resource :goods, only: [:create, :destroy]
