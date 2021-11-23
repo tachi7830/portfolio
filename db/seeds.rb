@@ -10,7 +10,7 @@ AdminUser.create!(
   email: 'admin@example.com',
   password: 'password',
   password_confirmation: 'password'
-) if Rails.env.development?
+)
 
 #メール認証スキップユーザー
 5.times do |n|
