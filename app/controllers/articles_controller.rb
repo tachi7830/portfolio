@@ -14,6 +14,7 @@ class ArticlesController < ApplicationController
     @article = Article.new(article_params)
     @article.user_id = current_user.id
     if @article.save
+      flash[:notice] = "投稿しました！"
       redirect_to articles_path
     else
       render "new"
@@ -32,12 +33,14 @@ class ArticlesController < ApplicationController
   def update
     article = Article.find(params[:id])
     article.update(article_params)
+    flash[:notice] = "記事更新しました！"
     redirect_to article_path(article.id)
   end
 
   def destroy
     article = Article.find(params[:id])
     article.destroy
+    flash[:notice] = "記事削除しました！"
     redirect_to articles_path
   end
 

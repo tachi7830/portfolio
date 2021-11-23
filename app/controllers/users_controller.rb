@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :authenticate_user!, except: [:show]
+  before_action :authenticate_user!, except: [:show, :mail_check]
   before_action :ensure_correct_user, only: [:edit, :update]
 
   def show
@@ -17,9 +17,12 @@ class UsersController < ApplicationController
   def update
     user = User.find(params[:id])
     user.update(user_params)
+    flash[:notice] = "ユーザー情報更新しました！"
     redirect_to user_path(user.id)
   end
 
+  def mail_check
+  end
 
   private
 

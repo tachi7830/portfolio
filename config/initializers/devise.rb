@@ -27,7 +27,7 @@ Devise.setup do |config|
   config.mailer_sender = 'panzukan@japan.com'
 
   # Configure the class responsible to send e-mails.
-  config.mailer = 'Users::Mailer'
+  config.mailer = 'UserMailer'
 
   # Configure the parent class responsible to send e-mails.
   # config.parent_mailer = 'ActionMailer::Base'

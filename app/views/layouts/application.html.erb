@@ -50,6 +50,13 @@
         </nav>
       </header>
       <main>
+        <div class="text-center mt-3 h5">
+          <% if flash[:notice] %>
+            <p id="notice">
+              <%= flash[:notice] %>
+            </p>
+          <% end %>
+        </div>
         <%= yield %>
       </main>
       <footer class="mt-5" style="background-color:#383c3c;">
