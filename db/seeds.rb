@@ -17,7 +17,8 @@ AdminUser.create!(
   User.create!(
     name: "ユーザー#{n + 1}",
     email: "user#{n + 1}@gmail.com",
-    password:  "11111#{n + 1}",
+    password: "11111#{n + 1}",
+    password_confirmation: "11111#{n + 1}",
     confirmed_at: Time.now
   )
 end
