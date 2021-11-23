@@ -21,7 +21,7 @@
             <img class="d-block w-100" src=<%= asset_path "slide2.jpg" %> alt="Second slide">
           </div>
           <div class="carousel-item">
-            <img class="d-block w-100" src=<%= asset_path "slide8.jpg" %> alt="Third slide">
+            <img class="d-block w-100" src=<%= asset_path "slide9.jpg" %> alt="Third slide">
           </div>
         </div>
         <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
@@ -41,7 +41,7 @@
         <h3>いいねランキング<週間></h3>
       </div>
       <% @week_ranks.each.with_index(1)  do |article, i| %>
-        <div class="row mb-1 border border-secondary rounded">
+        <div class="row mb-1 border border-secondary rounded" style="background-color: #f5deb3;">
           <div class="col-4 text-center">
             <h4 class="mt-4 mb-5"><%= i %>位</h4>
             <h5>いいね数<%= article.goods.count %></h5>
@@ -76,7 +76,7 @@
         <h3>新着記事一覧</h3>
       </div>
       <% @articles.each do |article| %>
-        <div class="row pt-2 mb-2 border border-secondary rounded">
+        <div class="row pt-2 mb-2 border border-secondary rounded" style="background-color: #f5deb3;">
           <div class="col-12 col-md-3 text-center">
             <div class="mb-2">
               <%= render "users/user_images", article: article %>
