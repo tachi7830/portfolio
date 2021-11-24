@@ -36,6 +36,21 @@
       <p class="col-3 offset-1 col-md-2 mb-4 mr-3">評価</p>
       <%= render 'articles/read_rates', article: @article %>
     </div>
+    <div class="row mb-3">
+      <div class="row col-11 offset-1">
+        <div id="good_buttons_<%= @article.id %>" class="mr-5">
+          <%= render "goods/goods", article: @article %>
+        </div>
+        <div>
+          <strong>
+            <% if @article.user == current_user %>
+              <%= link_to "編集", edit_article_path(@article.id), class: "link-border mr-5" %>
+              <%= link_to "削除", article_path(@article.id),class: "link-border", method: :delete, "data-confirm" => "本当に削除しますか？"%>
+            <% end %>
+          </strong>
+        </div>
+      </div>
+    </div>
   </div>
   <div class="my-4">
     <div class="row mb-4" id="comments">
