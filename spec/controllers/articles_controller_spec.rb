@@ -37,7 +37,7 @@ RSpec.describe ArticlesController, type: :controller do
         get :new
         expect(response).to_not be_success
       end
-      it "returns a 200 response" do
+      it "returns a 302 response" do
         get :new
         expect(response).to have_http_status "302"
       end
@@ -49,7 +49,7 @@ RSpec.describe ArticlesController, type: :controller do
     end
   end
 
-  describe "記事を投稿できるか" do
+  describe "記事を保存できるか" do
     before do
       @user = FactoryBot.create(:user, :a)
     end
@@ -71,7 +71,7 @@ RSpec.describe ArticlesController, type: :controller do
       }.to change(@user.articles, :count).by(1)
     end
     # 記事作成後に作成した記事の詳細ページへリダイレクトされているか？
-    it "redirects /articles/1)" do
+    it "redirects /articles/1" do
       sign_in @user
       post :create, params: {
         article: {
@@ -89,11 +89,10 @@ RSpec.describe ArticlesController, type: :controller do
   end
 
   describe "記事詳細ページにアクセスできるか" do
-    before do
-      @user = FactoryBot.create(:user, :a)
-      #アクセスする記事を作る
-      @article = FactoryBot.create(:article)
-    end
+  before do
+    @user = FactoryBot.create(:user, :a)
+    @article = FactoryBot.create(:article)
+  end
     context "login user" do
       it "responds successfully" do
         sign_in @user
@@ -111,7 +110,7 @@ RSpec.describe ArticlesController, type: :controller do
         get :show, params: {id: @article.id}
         expect(response).to_not be_success
       end
-      it "returns a 200 response" do
+      it "returns a 302 response" do
         get :show, params: {id: @article.id}
         expect(response).to have_http_status "302"
       end
@@ -125,7 +124,6 @@ RSpec.describe ArticlesController, type: :controller do
   describe "記事編集ページにアクセスできるか" do
     before do
       @user = FactoryBot.create(:user, :a)
-      #投稿ユーザーと別のユーザーを作る
       @other_user = FactoryBot.create(:user, :b)
       @article = FactoryBot.create(:article)
     end
@@ -146,7 +144,7 @@ RSpec.describe ArticlesController, type: :controller do
         get :edit, params: {id: @article.id}
         expect(response).to_not be_success
       end
-      it "returns a 200 response" do
+      it "returns a 302 response" do
         get :edit, params: {id: @article.id}
         expect(response).to have_http_status "302"
       end
@@ -187,13 +185,13 @@ RSpec.describe ArticlesController, type: :controller do
       expect(response).to redirect_to "/articles/1"
     end
   end
-  
+
   describe "記事を削除できるか" do
     before do
       @user = FactoryBot.create(:user, :a)
       @article = FactoryBot.create(:article)
     end
-    # 正常に記事を削除できるか？
+    # 記事を削除できるか？
     it "delete article" do
       sign_in @user
       expect {
@@ -201,7 +199,7 @@ RSpec.describe ArticlesController, type: :controller do
       }.to change(@user.articles, :count).by(-1)
     end
     # 記事を削除するとマイページに遷移する
-    it "redirects the page to root_path" do
+    it "redirects user_path(@user)" do
       sign_in @user
       delete :destroy, params: {id: @article.id}
       expect(response).to redirect_to user_path(@user)
