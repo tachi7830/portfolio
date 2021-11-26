@@ -1,5 +1,11 @@
-<p>ようこそ <%= @email %>さん!</p>
+<p>ようこそ <%= @resource.name %>さん!</p>
 
+<% if @resource.try(:unconfirmed_email?) %><!-- true→email変更 false→会員登録-->
+<p>以下のリンクをクリックして、メールアドレス変更手続きを完了してください。</p>
+
+<p><%= link_to "メールアドレスを変更する", confirmation_url(@resource, confirmation_token: @token) %></p>
+<% else %>
 <p>以下のリンクからユーザの認証を行ってユーザ登録を完了してください。</p>
 
 <p><%= link_to 'ユーザ認証を実行', confirmation_url(@resource, confirmation_token: @token) %></p>
+<% end %>

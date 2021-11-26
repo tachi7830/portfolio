@@ -12,5 +12,5 @@ class User < ApplicationRecord
   THUMBNAIL_SIZE = [100, 100]
   mount_uploader :image, ImageUploader
 
-  validates :name, presence: true
+  validates :name, length: { minimum: 2, maximum: 20 }
 end

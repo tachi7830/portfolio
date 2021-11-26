@@ -17,8 +17,8 @@ class Article < ApplicationRecord
   validates :shop_id, presence: true
   validates :images, presence: true
   validates :prefecture_code, presence: true
-  validates :bread_name, presence: true
-  validates :review, presence: true
+  validates :bread_name, presence: true, length: { maximum: 30 }
+  validates :review, presence: true, length: { maximum: 200 }
   validates :rate, presence: true
 
 end
