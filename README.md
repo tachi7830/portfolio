@@ -24,9 +24,8 @@
 
 ### テーマを選んだ理由  
 私は初めてパン屋さんのパンを食べた時に、焼き立ての香りとおいしさからパンが好きになりました。  
-そして、焼き立てのおいしいパンを多くの人に食べてもらいたい、  
-おいしいパンを共有したいと思いテーマにしました。  
-また、パンが好きな人やパンに興味を持った人が、パン屋さんやパンを探そうと思ったときに、  
+そして、「焼き立てのおいしいパンを多くの人に食べてもらいたい」「おいしいパンを共有したい」と思いテーマにしました。  
+また、パンが好きな人やパンに興味を持った人が、パン屋さんを探そうと思ったときに、  
 お店の新商品やおすすめなどの商品情報、店舗情報と購入したユーザーのレビューの２つの情報を  
 まとめ見れる使い勝手のいいサイトを作りたいと思いました。  
 
@@ -46,8 +45,6 @@ https://docs.google.com/spreadsheets/d/1Er4EBVqBAAQDXgJWrAGTIFlS8paA8SsP2OzwHjsK
 ワイヤーフレーム    
 https://drive.google.com/file/d/1W07xoNTA2qbkrzxRO8LgENRYr5Yb23Vo/view?usp=sharing
 
-詳細設計    
-
 ## チャレンジ要素一覧    
 https://docs.google.com/spreadsheets/d/1_bBzSXBNo4k4TFcJ29nCqadOFzGxQ5p0h6OushszvfA/edit#gid=0
 
@@ -59,3 +56,4 @@ JSライブラリ：jQuery
 IDE：Cloud9  
 
 ## 使用素材
+PhotoAC 写真のフリー素材サイト
