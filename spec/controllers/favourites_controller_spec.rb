@@ -24,6 +24,7 @@ RSpec.describe FavouritesController, type: :controller do
     end
     it "destroy favourite" do
       sign_in @user
+      Favourite.create!(user: @user, shop: @shop)
       expect {
         delete :destroy, params: {
           shop_id: @shop.id,

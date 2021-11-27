@@ -26,6 +26,7 @@ RSpec.describe CommentsController, type: :controller do
     end
     it "destroy comment" do
       sign_in @user
+      Comment.create!(user: @user, article: @article, comment: "おいしそうです")
       expect {
         delete :destroy, params: {
           article_id: @article.id,

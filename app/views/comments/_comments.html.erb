@@ -20,7 +20,7 @@
       <p class="mt-4">
         <% if current_user == comment_user %>
         <strong>
-          <%= link_to '削除する', article_comment_path(comment.article.id, comment.id), class: "link-border", method: :delete, remote: true %>
+          <%= link_to '削除', article_comment_path(comment.article.id, comment.id), class: "link-border", method: :delete, remote: true %>
         </strong>
         <% end %>
       </p>
