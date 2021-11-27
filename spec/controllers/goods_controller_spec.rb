@@ -24,6 +24,7 @@ RSpec.describe GoodsController, type: :controller do
     end
     it "destroy good" do
       sign_in @user
+      Good.create!(user: @user, article: @article)
       expect {
         delete :destroy, params: {
           article_id: @article.id,

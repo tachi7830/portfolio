@@ -39,7 +39,15 @@ RSpec.configure do |config|
   # examples within a transaction, remove the following line or assign false
   # instead of true.
   config.use_transactional_fixtures = true
-
+  config.before(:each) do |example|
+    if example.metadata[:type] == :system
+      if example.metadata[:js]
+        driven_by :selenium_chrome_headless, screen_size: [1400, 1400]
+      else
+        driven_by :rack_test
+      end
+    end
+  end
   # You can uncomment this line to turn off ActiveRecord support entirely.
   # config.use_active_record = false
 
@@ -60,6 +68,7 @@ RSpec.configure do |config|
 
   # Filter lines from Rails gems in backtraces.
   config.filter_rails_from_backtrace!
+  Selenium::WebDriver::Chrome::Service.driver_path = '/usr/local/bin/chromedriver'
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
 end

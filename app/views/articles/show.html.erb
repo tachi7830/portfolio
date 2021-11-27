@@ -1,55 +1,62 @@
 <div class='container'>
   <h2 class="my-5 text-center">記事詳細</h2>
-  <div class="col-10 offset-1 border border-secondary rounded" style="background-color: #f5deb3;">
-    <div class="row my-4">
-      <div class="col-12">
-        <div class="row">
-          <% @article.images.each do |image| %>
-            <div class="col-4 col-lg-3 mb-3">
-              <%= image_tag image.url, size: "180x130", class: "img-fluid border border-secondary rounded" %>
-            </div>
-          <% end %>
-        </div>
+  <div class="row col-lg-10 offset-lg-1 border border-secondary rounded mb-4" style="background-color: #f5deb3;">
+    <div class="col-12 col-md-3 text-center mt-5">
+      <div class="mb-2">
+        <%= render "users/user_images", article: @article %>
       </div>
-    </div>
-    <div class="row">
-      <p class="col-3 offset-1 col-md-2">店名</p>
-      <p class="col-8">
-        <%= link_to shop_path(@article.shop.id), class: "link-border" do %>
-          <strong><%= @article.shop.name %></strong>
+      <p>
+        <%= link_to user_path(@article.user), class: "link-border" do %>
+          <strong><%= @article.user.name %></strong>
         <% end %>
       </p>
+      <p><%= @article.created_at.strftime("%Y/%m/%d") %></p>
     </div>
-    <div class="row">
-      <p class="col-3 offset-1 col-md-2">都道府県</p>
-      <p class="col-8"><%= @article.prefecture.name %></p>
-    </div>
-    <div class="row">
-      <p class="col-3 offset-1 col-md-2 my-2">購入品</p>
-      <p class="col-8 my-2"><%= @article.bread_name %></p>
-    </div>
-    <div class="row">
-      <p class="col-3 offset-1 col-md-2 my-3">レビュー</p>
-      <p class="col-8 my-3"><%= @article.review %></p>
-    </div>
-    <div class="row">
-      <p class="col-3 offset-1 col-md-2 mb-4 mr-3">評価</p>
-      <%= render 'articles/read_rates', article: @article %>
-    </div>
-    <div class="row mb-3">
-      <div class="row col-11 offset-1">
-        <div id="good_buttons_<%= @article.id %>" class="mr-5">
-          <%= render "goods/goods", article: @article %>
-        </div>
-        <div>
-          <strong>
-            <% if @article.user == current_user %>
-              <%= link_to "編集", edit_article_path(@article.id), class: "link-border mr-5" %>
-              <%= link_to "削除", article_path(@article.id),class: "link-border", method: :delete, "data-confirm" => "本当に削除しますか？"%>
-            <% end %>
-          </strong>
-        </div>
+    <div class="col-9">
+      <div class="row my-3">
+        <% @article.images.each do |image| %>
+          <div class="col-4 col-lg-3 mb-3">
+            <%= image_tag image.url, size: "180x130", class: "img-fluid border border-secondary rounded" %>
+          </div>
+        <% end %>
       </div>
+      <div class="row">
+          <p class="col-4 col-md-3">店名</p>
+          <div class="col-8 col-md-9">
+            <%= link_to shop_path(@article.shop.id), class: "link-border" do %>
+              <strong><%= @article.shop.name %></strong>
+            <% end %>
+          </div>
+        </div>
+        <div class="row">
+          <p class="col-4 col-md-3">都道府県</p>
+          <div class="col-8 col-md-9"><%= @article.prefecture.name %></div>
+        </div>
+        <div class="row">
+          <p class="col-4 col-md-3">購入品</p>
+          <div class="col-8 col-md-9"><%= @article.bread_name %></div>
+        </div>
+        <div class="row">
+          <p class="col-4 col-md-3">レビュー</p>
+          <div class="col-8 col-md-9"><%= @article.review %></div>
+        </div>
+        <div class="row mt-3">
+          <p class="col-4 col-md-3 mr-3">評価</p>
+          <%= render 'articles/read_rates', article: @article %>
+        </div>
+        <div class="row col-12 mb-3">
+          <div id="good_buttons_<%= @article.id %>" class="mr-5">
+            <%= render "goods/goods", article: @article %>
+          </div>
+          <div>
+            <strong>
+              <% if @article.user == current_user %>
+                <%= link_to "編集", edit_article_path(@article.id), class: "link-border mr-5" %>
+                <%= link_to "削除", article_path(@article.id),class: "link-border", method: :delete, "data-confirm" => "本当に削除しますか？"%>
+              <% end %>
+            </strong>
+          </div>
+        </div>
     </div>
   </div>
   <div class="my-4">

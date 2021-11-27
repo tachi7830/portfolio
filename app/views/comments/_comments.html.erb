@@ -3,10 +3,14 @@
   <div class="row col-8 offset-2 rounded border border-secondary mb-2">
     <div class="col-6 col-md-3 mt-3">
       <div class="text-center">
-        <%= render "users/user_images", article: article %>
+        <% if comment.user.image.present? %>
+          <%= image_tag comment.user.image.url, class: "border border-secondary rounded", :size => "70x70" %>
+        <% else %>
+          <%= image_tag "no_image_user.png", class: "border border-secondary rounded", :size => "70x70" %>
+        <% end %>
         <p>
-          <%= link_to user_path(article.user), class: "link-border" do %>
-            <strong><%= article.user.name %></strong>
+          <%= link_to user_path(comment.user), class: "link-border" do %>
+            <strong><%= comment.user.name %></strong>
           <% end %>
         </p>
       </div>
@@ -14,7 +18,7 @@
     <div class="col-8 offset-2 col-md-9 offset-md-0 mt-3">
       <%= comment.comment %>
       <p class="mt-4">
-        <% if comment_user == current_user %>
+        <% if current_user == comment_user %>
         <strong>
           <%= link_to '削除する', article_comment_path(comment.article.id, comment.id), class: "link-border", method: :delete, remote: true %>
         </strong>
