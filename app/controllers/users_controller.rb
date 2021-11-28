@@ -17,9 +17,13 @@ class UsersController < ApplicationController
   def update
     user = User.find(params[:id])
     prev_email = user.email
+    #変更前のユーザーのメールアドレスを保存
     if user.update(user_params)
       now_email = params[:user][:email]
+      #変更後のメールアドレスを保存
       if prev_email == now_email
+        #変更前と変更後のメールアドレスが同じなら他のカラムの変更なのでプロフィール更新
+        #メールアドレスが一致しない場合メールアドレスの変更なので認証メールを送る
         flash[:notice] = "プロフィール更新しました！"
         redirect_to user_path(user.id)
       else

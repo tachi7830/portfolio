@@ -1,5 +1,7 @@
 <div class='container'>
   <div class="text-center" style="margin-top:200px;">
+    <!--ログインユーザーの認証メールがメール変更ならtrue、会員登録ならfalse-->
+    <!--unconfirmed_email= メールアドレス変更用のカラム-->
     <% if current_user.try(:unconfirmed_email?) %>
     <h4>
       変更後のメールアドレスに認証メールをお送りしました!<br>
