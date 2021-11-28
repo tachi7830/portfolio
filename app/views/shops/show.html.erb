@@ -1,9 +1,9 @@
 <div class='container'>
   <div class="row mt-5">
-    <div class="col-4 offset-1">
+    <div class="col-6 offset-3 col-md-4 offset-md-1 mb-5">
       <%= image_tag @shop.image.url, class: "border border-secondary rounded" %>
     </div>
-    <div class="col-6 mt-5">
+    <div class="col-10 col-md-4 mt-5">
       <div>
         <h2><strong><%= @shop.name %></strong></h2>
       </div>
@@ -14,18 +14,20 @@
     </div>
   </div>
   </div>
-  <div class="row mt-5">
-    <div class="col-3 offset-2">
-      <h4><strong>News</strong></h4>
+  <div class="row">
+    <div class="col-8 offset-2 col-md-6 offset-md-3 col-lg-4 offset-lg-4 ribbon6 mt-5">
+      <h4>News</h4>
     </div>
-    <div class="col-4">
+  </div>
+  <div class="row mt-4">
+    <div class="col-12 text-center">
       <h4><strong><%= @shop.news %></strong></h4>
     </div>
   </div>
   <div class="row col-12 col-lg-10 offset-lg-1 mt-5 text-center">
     <% @breads.each do |bread| %>
-    <div class="col-3 col-lg-3">
-      <div class="border border-secondary rounded mb-2" style="background-color: #f5deb3;">
+    <div class="col-4 col-md-3">
+      <div class="border border-secondary rounded mb-2" style="background-color: #f5f5f5;">
         <div><%= image_tag bread.image.url, :size => "255x200", class: "img-fluid border border-secondary rounded" %></div>
         <p><%= bread.name %></p>
         <p><%= bread.price %>円</p>
@@ -37,10 +39,10 @@
     <strong><%= link_to "全ての商品を見る", shop_breads_path(@shop.id), class: "link-border" %></strong>
   </div>
   <div class=" mt-5">
-    <h4 class="mb-4 text-center">
-      <strong>店舗情報</strong>
-    </h4>
-    <table class="table border col-10 offset-1 col-lg-8 offset-lg-2 col-xl-6 offset-xl-3">
+    <div class="col-8 offset-2 col-md-6 offset-md-3 col-lg-4 offset-lg-4 ribbon6 mt-5">
+      <h4>店舗情報</h4>
+    </div>
+    <table class="table border col-10 offset-1 col-lg-8 offset-lg-2 col-xl-6 offset-xl-3 mt-3">
       <tr>
         <th>店名</th>
         <td><%= @shop.name %></td>
@@ -93,13 +95,13 @@
        }
   </script>
   <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAP'] %>&callback=initMap"async defer></script>
-  <h4 class="mt-5 text-center">
-    <strong>記事</strong>
-  </h4>
+  <div class="col-8 offset-2 col-md-6 offset-md-3 col-lg-4 offset-lg-4 ribbon6 mt-5">
+    <h4>記事</h4>
+  </div>
   <% @articles.each do |article| %>
-    <div class="row border border-secondary rounded mt-5" style="background-color: #f5deb3;">
-      <div class="col-2 text-center">
-        <div class="mb-2 mt-3">
+    <div class="row col-10 offset-1 border border-secondary rounded mt-3" style="background-color: #f5f5f5;">
+      <div class="col-12 col-md-3 text-center">
+        <div class="mb-2 mt-5">
           <%= render "users/user_images", article: article %>
         </div>
         <p>
@@ -109,22 +111,24 @@
         </p>
         <p><%= article.created_at.strftime("%Y/%m/%d") %></p>
       </div>
-      <div class="col-9 offset-1 mt-3">
+      <div class="col-12 col-md-8 mt-3">
         <div class="row">
           <% article.images.each do |image| %>
-            <div class="col-3">
+            <div class="col-6">
               <%= image_tag image.url, :size => "150x100", class: "img-fluid border border-secondary rounded mb-2" %>
             </div>
           <% end %>
         </div>
-        <div class="col-9 mt-3">
-          <p><%= article.bread_name %></p>
-          <p><%= article.review %></p>
-          <div class="row">
-            <%= render 'articles/read_rates', article: article %>
+        <div class="row">
+          <div class="col-12 mt-3">
+            <p><%= article.bread_name %></p>
+            <p><%= article.review %></p>
+            <div class="row ml-1">
+              <%= render 'articles/read_rates', article: article %>
+            </div>
           </div>
         </div>
-        <div class="row col-9 mt-4 mb-3">
+        <div class="row col-12 mt-4 mb-3">
           <div id="good_buttons_<%= article.id %>">
             <%= render "goods/goods", article: article %>
           </div>
