@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   }
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
+  get  "/users" => redirect("/users/sign_in")
   get 'shops/search' => 'shops#search'
 
   resources :articles do

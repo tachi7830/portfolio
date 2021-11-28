@@ -22,7 +22,10 @@ class ArticlesController < ApplicationController
   end
 
   def show
-    @article = Article.find(params[:id])
+    @article = Article.find_by(id: params[:id])
+    unless @article 
+      redirect_to articles_path
+    end
     @comment = Comment.new
   end
 
@@ -56,5 +59,8 @@ class ArticlesController < ApplicationController
       redirect_to articles_path
     end
   end
+  
+  def browser_back
 
+  end 
 end
