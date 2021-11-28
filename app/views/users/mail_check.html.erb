@@ -1,9 +1,17 @@
 <div class='container'>
   <div class="text-center" style="margin-top:200px;">
+    <% if current_user.try(:unconfirmed_email?) %>
+    <h4>
+      変更後のメールアドレスに認証メールをお送りしました!<br>
+      メールの「メールアドレスを変更する」をクリックして<br>
+      登録してください！
+    </h4>
+    <% else %>
     <h4>
       ご登録のメールアドレスに認証メールをお送りしました!<br>
       メールの「ユーザ認証を実行」をクリックして<br>
       ログインしてください！
     </h4>
+    <% end %>
   </div>
 </div>

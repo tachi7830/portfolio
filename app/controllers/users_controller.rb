@@ -16,9 +16,15 @@ class UsersController < ApplicationController
 
   def update
     user = User.find(params[:id])
+    prev_email = user.email
     if user.update(user_params)
-      flash[:notice] = "プロフィール更新しました！"
-      redirect_to user_path(user.id)
+      now_email = params[:user][:email]
+      if prev_email == now_email
+        flash[:notice] = "プロフィール更新しました！"
+        redirect_to user_path(user.id)
+      else
+        redirect_to mail_check_path
+      end
     else
       flash[:notice] = "プロフィール更新失敗しました！"
       render "edit"
@@ -27,6 +33,7 @@ class UsersController < ApplicationController
 
   def mail_check
   end
+
 
   private
 
