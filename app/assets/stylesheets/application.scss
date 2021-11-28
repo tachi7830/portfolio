@@ -53,6 +53,11 @@ main {
 
 .pagination>li>a {
   border: none;
+  color: #a9a9a9;
+}
+
+.pagination>.active>a {
+  background: #a9a9a9 !important;
 }
 
 // エラーメッセージ表示時レイアウト崩れを防ぐ
