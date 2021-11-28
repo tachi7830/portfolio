@@ -89,7 +89,7 @@ RSpec.describe UsersController, type: :controller do
       sign_in @user
       user_params = {name: "updateuser"}
       patch :update, params: {id: @user.id, user: user_params}
-      expect(response).to redirect_to user_path(@user)
+      expect(response).to redirect_to mail_check_path
     end
   end
 end
