@@ -27,8 +27,7 @@ RSpec.describe GoodsController, type: :controller do
       Good.create!(user: @user, article: @article)
       expect {
         delete :destroy, params: {
-          article_id: @article.id,
-          good_id: 1
+          article_id: @article.id
         }
       }.to change(Good, :count).by(-1)
     end

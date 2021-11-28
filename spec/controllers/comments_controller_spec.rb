@@ -30,7 +30,7 @@ RSpec.describe CommentsController, type: :controller do
       expect {
         delete :destroy, params: {
           article_id: @article.id,
-          comment_id: 1
+          id: 1
         }
       }.to change(Comment, :count).by(-1)
     end
