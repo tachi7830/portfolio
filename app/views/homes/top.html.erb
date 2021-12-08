@@ -36,7 +36,7 @@
     </div>
   </div>
   <div class="row">
-    <div class="col-10 offset-1 offset-xl-0 col-xl-5 ">
+    <div class="col-10 offset-1 col-lg-8 offset-lg-2 col-xl-5 offset-xl-0">
       <div class="col-12 col-md-8 offset-md-2 col-xl-10 offset-xl-1 ribbon6 my-5">
         <h3>いいねランキング</h3>
       </div>
@@ -71,14 +71,14 @@
         </div>
       <% end %>
     </div>
-    <div class="col-10 offset-1 offset-xl-1 col-xl-6">
+    <div class="col-10 offset-1 col-lg-8 offset-lg-2 col-xl-6 offset-xl-1">
       <div class="col-12 col-md-8 offset-md-2 col-xl-10 offset-xl-1 ribbon6 my-5">
         <h3>新着記事一覧</h3>
       </div>
       <% @articles.each do |article| %>
         <div class="row pt-2 mb-2 border border-secondary rounded" style="background-color: #f5f5f5;">
           <div class="col-12 col-md-3 text-center">
-            <div class="mb-2">
+            <div class="mb-2 mt-5">
               <%= render "users/user_images", article: article %>
             </div>
             <p>
@@ -88,11 +88,11 @@
             </p>
             <p><%= article.created_at.strftime("%Y/%m/%d") %></p>
           </div>
-          <div class="col-9 col-md-8">
+          <div class="col-11 offset-1 col-md-9 offset-md-0">
             <div class="row mb-2">
               <% article.images.each do |image| %>
-                <div class="col-4">
-                  <%= image_tag image.url, size: "150x100", class: "img-fluid border border-secondary rounded mr-2 mb-1"%>
+                <div class="col-5">
+                  <%= image_tag image.url, size: "150x100", class: "border border-secondary rounded mr-2 mb-1"%>
                 </div>
               <% end %>
             </div>
