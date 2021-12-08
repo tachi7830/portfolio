@@ -36,7 +36,7 @@
     </div>
   </div>
   <div class="row">
-    <div class="col-12 col-md-10 offset-md-1 col-lg-8 offset-lg-2 col-xl-5 offset-xl-0">
+    <div class="col-10 offset-1 col-lg-8 offset-lg-2 col-xl-5 offset-xl-0">
       <div class="col-10 offset-1 col-md-8 offset-md-2 col-xl-10 offset-xl-1 ribbon6 my-5">
         <h3>いいねランキング</h3>
       </div>
@@ -71,7 +71,7 @@
         </div>
       <% end %>
     </div>
-    <div class="col-12 col-md-10 offset-md-1 col-lg-8 offset-lg-2 col-xl-6 offset-xl-1">
+    <div class="col-10 offset-1 col-lg-8 offset-lg-2 col-xl-6 offset-xl-1">
       <div class="col-10 offset-1 col-md-8 offset-md-2 col-xl-10 offset-xl-1 ribbon6 my-5">
         <h3>新着記事一覧</h3>
       </div>
@@ -89,10 +89,10 @@
             <p><%= article.created_at.strftime("%Y/%m/%d") %></p>
           </div>
           <div class="col-11 offset-1 col-md-9 offset-md-0">
-            <div class="row mb-2">
+            <div class="row mb-2 mt-2">
               <% article.images.each do |image| %>
                 <div class="col-5">
-                  <%= image_tag image.url, size: "150x100", class: "border border-secondary rounded mr-2 mb-1"%>
+                  <%= image_tag image.url, size: "150x100", class: "img-fluid border border-secondary rounded mr-2 mb-1"%>
                 </div>
               <% end %>
             </div>
@@ -106,7 +106,7 @@
                 <p><%= article.prefecture.name %></p>
                 <p><%= article.bread_name %></p>
                 <p><%= article.review %></p>
-                <div class="row ml-1">
+                <div class="row ml-1 mb-2">
                   <%= render 'articles/read_rates', article: article %>
                 </div>
               </div>
