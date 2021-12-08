@@ -46,7 +46,7 @@
             <h4 class="mt-4 mb-5"><%= i %>位</h4>
             <h5>いいね<i class="fas fa-heart" style="color:#d9333f;"><%= article.goods.count %></i></h5>
           </div>
-          <div class="col-4 text-center">
+          <div class="col-3 text-center">
             <div class="mt-4 mb-2">
               <%= render "users/user_images", article: article %>
             </div>
@@ -56,7 +56,7 @@
               <% end %>
             </p>
           </div>
-          <div class="col-4 text-center">
+          <div class="col-5 text-center">
             <div class="mt-3">
               <%= link_to article_path(article.id) do %>
                 <%= image_tag article.images[0].url, :size => "150x100", class: "img-fluid border border-secondary rounded mb-2" %>
