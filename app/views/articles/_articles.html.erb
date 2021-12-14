@@ -33,14 +33,14 @@
             <%= render 'articles/read_rates', article: article %>
           </div>
           <div class="row col-12 mb-3">
-          <div id="good_buttons_<%= article.id %>" class="mr-5">
+          <div id="good_buttons_<%= article.id %>" class="mr-3">
             <%= render "goods/goods", article: article %>
           </div>
           <div>
             <strong>
               <%= link_to "コメントする", article_path(article.id), class: "link-border mr-5" %>
               <% if article.user == current_user %>
-                <%= link_to "編集", edit_article_path(article.id), class: "link-border mr-5" %>
+                <%= link_to "編集", edit_article_path(article.id), class: "link-border mr-3" %>
                 <%= link_to "削除", article_path(article.id),class: "link-border", method: :delete, "data-confirm" => "本当に削除しますか？"%>
               <% end %>
             </strong>
