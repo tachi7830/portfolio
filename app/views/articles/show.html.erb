@@ -1,52 +1,55 @@
 <div class='container'>
-  <div class="col-10 offset-1 col-md-12 offset-md-0 col-lg-10 offset-lg-1">
-    <div class="col-12 col-md-8 offset-md-2 col-lg-6 offset-lg-3 ribbon6 my-5">
-      <h3>記事詳細</h3>
-    </div>
-    <div class="row pt-2 mb-2 border border-secondary rounded" style="background-color: #f5f5f5;">
-      <div class="col-12 col-md-3 text-center">
-        <div class="mb-2 mt-5">
-          <%= render "users/user_images", article: @article %>
-        </div>
-        <p>
-          <%= link_to user_path(@article.user),class: "link-border" do %>
-            <strong><%= @article.user.name %></strong>
-          <% end %>
-        </p>
-        <p><%= @article.created_at.strftime("%Y/%m/%d") %></p>
+  <div class="row">
+    <div class="col-10 offset-1 col-md-12 offset-md-0 col-lg-8 offset-lg-2">
+      <div class="col-12 col-md-8 offset-md-2 col-lg-6 offset-lg-3 ribbon6 my-5">
+        <h3>記事詳細</h3>
       </div>
-      <div class="col-12 col-md-9">
-        <div class="row my-2">
-          <% @article.images.each do |image| %>
-            <div class="col-6 col-md-4">
-              <%= image_tag image.url, size: "180x130", class: "img-fluid border border-secondary rounded mr-2 mb-1"%>
-            </div>
-          <% end %>
+      <div class="row pt-2 mb-2 border border-secondary rounded" style="background-color: #f5f5f5;">
+        <div class="col-12 col-md-3 text-center">
+          <div class="mb-2 mt-5">
+            <%= render "users/user_images", article: @article %>
+          </div>
+          <p>
+            <%= link_to user_path(@article.user),class: "link-border" do %>
+              <strong><%= @article.user.name %></strong>
+            <% end %>
+          </p>
+          <p><%= @article.created_at.strftime("%Y/%m/%d") %></p>
         </div>
-        <div class="row">
-          <div class="col-12">
-            <p>
-              <%= link_to shop_path(@article.shop.id),class: "link-border" do %>
-                <strong><%= @article.shop.name %></strong>
-              <% end %>
-            </p>
-            <p><%= @article.prefecture.name %></p>
-            <p><%= @article.bread_name %></p>
-            <p><%= @article.review %></p>
-            <div class="row ml-1 mb-2">
-              <%= render 'articles/read_rates', article: @article %>
-            </div>
-            <div class="row col-12 mb-3">
-            <div id="good_buttons_<%= @article.id %>" class="mr-3">
-              <%= render "goods/goods", article: @article %>
-            </div>
-            <div>
-              <strong>
-                <% if @article.user == current_user %>
-                  <%= link_to "編集", edit_article_path(@article.id), class: "link-border mr-3" %>
-                  <%= link_to "削除", article_path(@article.id),class: "link-border", method: :delete, "data-confirm" => "本当に削除しますか？"%>
+        <div class="col-12 col-md-9">
+          <div class="row my-2">
+            <% @article.images.each do |image| %>
+              <div class="col-6 col-md-4">
+                <%= image_tag image.url, size: "180x130", class: "img-fluid border border-secondary rounded mr-2 mb-1"%>
+              </div>
+            <% end %>
+          </div>
+          <div class="row">
+            <div class="col-12">
+              <p>
+                <%= link_to shop_path(@article.shop.id),class: "link-border" do %>
+                  <strong><%= @article.shop.name %></strong>
                 <% end %>
-              </strong>
+              </p>
+              <p><%= @article.prefecture.name %></p>
+              <p><%= @article.bread_name %></p>
+              <p><%= @article.review %></p>
+              <div class="row ml-1 mb-2">
+                <%= render 'articles/read_rates', article: @article %>
+              </div>
+              <div class="row col-12 mb-3">
+                <div id="good_buttons_<%= @article.id %>" class="mr-3">
+                  <%= render "goods/goods", article: @article %>
+                </div>
+                <div>
+                  <strong>
+                    <% if @article.user == current_user %>
+                      <%= link_to "編集", edit_article_path(@article.id), class: "link-border mr-3" %>
+                      <%= link_to "削除", article_path(@article.id),class: "link-border", method: :delete, "data-confirm" => "本当に削除しますか？"%>
+                    <% end %>
+                  </strong>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -62,9 +65,9 @@
         <%= render 'layouts/errors', model: @comment %>
       </div>
       <%= form_with model:[@article,@comment], remote: true do |f| %>
-        <%= f.label "コメント", class: "offset-md-2 h5" %>
-        <%= f.text_area :comment, size:"50x5", class: "form-control col-12 col-md-8 offset-md-2" %><br>
-        <%= f.submit '送信', class: "btn btn-secondary offset-md-2 px-4"%>
+        <%= f.label "コメント", class: "offset-1 offset-md-2 offset-lg-3 h5" %>
+        <%= f.text_area :comment, size:"50x5", class: "form-control col-10 offset-1 col-md-8 offset-md-2 col-lg-6 offset-lg-3" %><br>
+        <%= f.submit '送信', class: "btn btn-secondary offset-1 offset-md-2 offset-lg-3 px-4"%>
       <% end %>
     </div>
   </div>
