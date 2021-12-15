@@ -1,24 +1,24 @@
 <div class='container'>
-  <div class="col-8 offset-2 col-md-6 offset-md-3 col-lg-4 offset-lg-4 ribbon6 my-5">
-    <h2>プロフィール編集</h2>
-  </div>
   <div class="row">
+    <div class="col-8 offset-2 col-md-6 offset-md-3 col-lg-4 offset-lg-4 ribbon6 my-5">
+      <h2>プロフィール編集</h2>
+    </div>
     <div class="col-12">
       <%= form_with model: @user, local: true do |f| %>
         <div class="form-group row">
-          <%= f.label :"ユーザー画像", class: "col-3 offset-2 h5"%>
+          <%= f.label :"ユーザー画像", class: "col-3 offset-1 offset-md-2 h5"%>
           <%= f.file_field :image %>
         </div>
         <div class="field form-group row mt-5">
-          <%= f.label :"ユーザー名", class: "col-3 offset-2 h5" %>
+          <%= f.label :"ユーザー名", class: "col-3 offset-1 offset-md-2 h5" %>
           <%= f.text_field :name, class: "form-control col-4" %>
         </div>
         <div class="field form-group row mt-5">
-          <%= f.label :"メールアドレス", class: "col-3 offset-2 h5" %>
+          <%= f.label :"メールアドレス", class: "col-3 offset-1 offset-md-2 h5" %>
           <%= f.email_field :email, class: "form-control col-4" %>
         </div>
         <div class="row">
-          <%= f.submit "変更",class: 'btn btn-secondary offset-5 mt-3 px-4' %>
+          <%= f.submit "変更",class: 'btn btn-secondary offset-4 offset-md-5 mt-3 px-4' %>
         </div>
       <% end %>
     </div>
