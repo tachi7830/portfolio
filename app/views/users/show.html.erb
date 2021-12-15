@@ -6,7 +6,7 @@
       <% else %>
         <%= image_tag "no_image_user.png", size: "100x100", class: "rounded border border-secondary mx-auto" %>
       <% end %>
-      <h6 class="mt-4"><%= @user.name %></h6>
+      <h5 class="mt-4 mb-3"><%= @user.name %></h5>
       <div>
         <strong>
           <% if @user == current_user %>
