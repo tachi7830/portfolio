@@ -1,9 +1,11 @@
 <div class='container'>
-  <div class="col-10 offset-1 col-md-12 offset-md-0 col-lg-10 offset-lg-1">
-    <div class="col-12 col-md-8 offset-md-2 col-lg-6 offset-lg-3 ribbon6 my-5">
-      <h3>記事一覧</h3>
+  <div class="row">
+    <div class="col-10 offset-1 col-md-12 offset-md-0 col-lg-10 offset-lg-1">
+      <div class="col-12 col-md-8 offset-md-2 col-lg-6 offset-lg-3 ribbon6 my-5">
+        <h3>記事一覧</h3>
+      </div>
+      <%= render "articles/articles", articles: @articles %>
     </div>
-    <%= render "articles/articles", articles: @articles %>
   </div>
   <div class="pagination my-5"><strong><%= paginate @articles %></strong></div>
 </div>

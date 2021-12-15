@@ -1,6 +1,6 @@
 <div class='container'>
   <div class="row">
-    <div class="col-4 offset-4 my-5 text-center">
+    <div class="col-12 my-5 text-center">
       <% if @user.image.present? %>
         <%= image_tag @user.image.url, size: "100x100", class: "rounded border border-secondary mx-auto" %>
       <% else %>
@@ -17,13 +17,13 @@
     </div>
   </div>
   <% if @user == current_user %>
-    <div class="col-8 offset-2 col-md-6 offset-md-3 col-lg-4 offset-lg-4 ribbon6 my-5">
-      <h4>お気に入り店一覧</h4>
-    </div>
     <div class="row">
-      <div class="col-10 offset-1" style="background-color: #f5f5f5;">
+      <div class="col-10 offset-1 col-lg-8 offset-lg-2">
+        <div class="col-10 offset-1 col-md-8 offset-md-2 col-lg-6 offset-lg-3 ribbon6 my-5">
+          <h3>お気に入り店一覧</h3>
+        </div>
         <% @favourites.each do |favourite| %>
-          <div class="row py-3 rounded border border-secondary">
+          <div class="row py-3 rounded border border-secondary mb-2" style="background-color: #f5f5f5;">
             <div class="col-4">
               <%= image_tag favourite.shop.image.url, size: "120x100", class: "img-fluid rounded border border-secondary mx-auto" %>
             </div>
@@ -41,66 +41,12 @@
     </div>
     <div class="pagination my-5"><%= paginate @favourites %></div>
   <% end %>
-  <div class="col-8 offset-2 col-md-6 offset-md-3 col-lg-4 offset-lg-4 ribbon6 my-5">
-    <h4>投稿一覧</h4>
-  </div>
   <div class="row">
-    <div class="col-10 offset-1">
-      <% @articles.each do |article| %>
-        <div class="row rounded border border-secondary  mb-3" style="background-color: #f5f5f5;">
-          <div class="col-12">
-            <div class="row mb-3 mt-2">
-              <% article.images.each do |image| %>
-              <div class="col-3 mt-2">
-                <%= image_tag image.url, size: "200x150", class: "img-fluid rounded border border-secondary"%>
-              </div>
-              <% end %>
-            </div>
-            <div class="row">
-              <p class="col-3 offset-1">店名</p>
-              <div class="col-8">
-                <%= link_to shop_path(article.shop.id), class: "link-border" do %>
-                  <strong><%= article.shop.name %></strong>
-                <% end %>
-              </div>
-            </div>
-            <div class="row">
-              <p class="col-3 offset-1">都道府県</p>
-              <div class="col-8"><%= article.prefecture.name %></div>
-            </div>
-            <div class="row">
-              <p class="col-3 offset-1">購入品</p>
-              <div class="col-8"><%= article.bread_name %></div>
-            </div>
-            <div class="row">
-              <p class="col-3 offset-1">レビュー</p>
-              <div class="col-8"><%= article.review %></div>
-            </div>
-            <div class="row mt-3">
-              <p class="col-3 offset-1 mr-3">評価</p>
-              <%= render 'articles/read_rates', article: article %>
-            </div>
-            <div class="row offset-1 mb-3">
-              <div id="good_buttons_<%= article.id %>" class="mr-5">
-                <%= render "goods/goods", article: article %>
-              </div>
-              <div>
-                <strong>
-                  <% if user_signed_in? %>
-                    <%= link_to "コメントする", article_path(article.id), class: "link-border mr-5" %>
-                  <% else %>
-                    <%= link_to "コメントする", new_user_session_path, class: "link-border mr-5" %>
-                  <% end %>
-                  <% if @user == current_user %>
-                    <%= link_to "編集", edit_article_path(article.id), class: "link-border mr-5" %>
-                    <%= link_to "削除", article_path(article.id),class: "link-border", method: :delete, "data-confirm" => "本当に削除しますか？"%>
-                  <% end %>
-                </strong>
-              </div>
-            </div>
-          </div>
-        </div>
-      <% end %>
+    <div class="col-10 offset-1 col-md-12 offset-md-0 col-lg-10 offset-lg-1">
+      <div class="col-10 offset-1 col-md-6 offset-md-3 col-lg-4 offset-lg-4 ribbon6 my-5">
+        <h3>記事一覧</h3>
+      </div>
+      <%= render "articles/articles", articles: @articles %>
     </div>
   </div>
   <div class="pagination my-5"><%= paginate @articles%></div>
