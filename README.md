@@ -58,13 +58,13 @@ https://docs.google.com/spreadsheets/d/10gNPf0_2O0asD46LBLY_jRfC9RjN_v7Sk3GQgMcv
 https://docs.google.com/spreadsheets/d/1_bBzSXBNo4k4TFcJ29nCqadOFzGxQ5p0h6OushszvfA/edit#gid=0
 
 ## 開発環境
- OS：Windows  
+ OS：Linux  
 言語：HTML,CSS,JavaScript,Ruby,MYSQL  
 フレームワーク：Ruby on Rails  
 JSライブラリ：jQuery  
-IDE：Cloud9  
-本番環境：AWS Linux
-DB: RDS
+IDE：Cloud9    
+本番環境：AWS(Linux)  
+DB: RDS  
 
 ## 使用素材
 PhotoAC 写真のフリー素材サイト  
