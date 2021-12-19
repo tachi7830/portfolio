@@ -63,6 +63,8 @@ https://docs.google.com/spreadsheets/d/1_bBzSXBNo4k4TFcJ29nCqadOFzGxQ5p0h6Oushsz
 フレームワーク：Ruby on Rails  
 JSライブラリ：jQuery  
 IDE：Cloud9  
+本番環境：AWS Linux
+DB: RDS
 
 ## 使用素材
 PhotoAC 写真のフリー素材サイト  
