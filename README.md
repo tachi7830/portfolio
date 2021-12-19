@@ -59,7 +59,7 @@ https://docs.google.com/spreadsheets/d/1_bBzSXBNo4k4TFcJ29nCqadOFzGxQ5p0h6Oushsz
 
 ## 開発環境
  OS：Linux  
-言語：HTML,CSS,JavaScript,Ruby,MYSQL  
+言語：HTML,CSS,JavaScript,Ruby,SQL    
 フレームワーク：Ruby on Rails  
 JSライブラリ：jQuery  
 IDE：Cloud9    
