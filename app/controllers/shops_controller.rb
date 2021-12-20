@@ -10,7 +10,8 @@ class ShopsController < ApplicationController
   end
 
   def search
-    @searchs = Shop.search(params).page(params[:page]).per(10)  #paramsでParametersの値をすべて持ってくる
+    @searchs = Shop.search(params).page(params[:page]).per(10)
+    #paramsでParametersの値をすべて持ってくる
   end
 
   private
