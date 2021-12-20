@@ -60,7 +60,4 @@ class ArticlesController < ApplicationController
     end
   end
   
-  def browser_back
-
-  end 
 end
