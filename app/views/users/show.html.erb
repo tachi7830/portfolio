@@ -23,7 +23,7 @@
           <h3>お気に入り店一覧</h3>
         </div>
         <% @favourites.each do |favourite| %>
-          <div class="row py-3 rounded border border-secondary mb-2" style="background-color: #f5f5f5;">
+          <div class="row py-3 rounded border border-secondary mb-2 back-color">
             <div class="col-4">
               <%= image_tag favourite.shop.image.url, size: "120x100", class: "img-fluid rounded border border-secondary mx-auto" %>
             </div>
