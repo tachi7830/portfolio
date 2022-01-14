@@ -21,7 +21,7 @@
   margin: 0;
   padding: 0;
  }
- 
+
 .title-text{
   display: none;
 }
@@ -37,6 +37,14 @@ body {
 
 main {
   flex: 1;
+}
+
+.header-color{
+  background-color:#383c3c;
+}
+
+.footer-color{
+  background-color:#383c3c;
 }
 
 .navbar-toggler .navbar-toggler-icon {
